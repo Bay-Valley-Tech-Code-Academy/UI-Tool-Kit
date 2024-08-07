@@ -35,6 +35,15 @@ export default function Example() {
           <a href="action#" className="text-sm font-semibold leading-6 text-gray-900">
             Action Page
           </a>
+          <a href="productlists#" className="text-sm font-semibold leading-6 text-gray-900">
+            Product Lists
+          </a>
+          <a href="product#" className="text-sm font-semibold leading-6 text-gray-900">
+            Product Overview
+          </a>
+          <a href="cart#" className="text-sm font-semibold leading-6 text-gray-900">
+            Shopping Cart
+          </a>
           <a href="about#" className="text-sm font-semibold leading-6 text-gray-900">
             About
           </a>
@@ -68,6 +77,24 @@ export default function Example() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Action Page
+                </a>
+                <a
+                  href="productlists#"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Product Lists
+                </a>
+                <a
+                  href="product#"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Product Overview
+                </a>
+                <a
+                  href="cart#"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Shopping Cart
                 </a>
                 <a
                   href="about#"
