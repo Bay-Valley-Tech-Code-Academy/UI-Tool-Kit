@@ -24,7 +24,7 @@ const products = [
       imageSrc: 'https://static.wixstatic.com/media/a4735d_5b7f09339fee43b6b6ba0a80ba96fcb5~mv2.jpg/v1/crop/x_0,y_0,w_2026,h_1061/fill/w_481,h_252,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_5786_edited.jpg',
       imageAlt: "Bay Valley Tech Sweater.",
       price: '$49.99',
-      description: 'A warm and cozy sweater, great for meet-ups.'
+      description: 'A warm and cozy sweater, great for winter meet-ups.'
     },
     {
       id: 4,
