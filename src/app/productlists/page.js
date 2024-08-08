@@ -1,7 +1,7 @@
 import products from '../data/products';
 
 
-export default function Example() {
+export default function ProductList() {
   return (
     <div className="bg-gradient-to-r from-[#6503B2] via-[#3C04A7] to-[#000698]">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
