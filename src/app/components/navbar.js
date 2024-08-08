@@ -5,7 +5,7 @@ import bvtlogo from '../images/bvt-logo.png'
 export default function Navbar() {
 
     return (
-        <nav className="flex sticky bg-indigo-900 opacity-100 p-4 px-20 gap-50">
+        <nav className="md:flex sticky bg-indigo-900 opacity-100 p-4 px-20 gap-50">
             <div className="flex justify-start">
                 <Image src={bvtlogo} className="w-14 rounded-full" />
             </div>
