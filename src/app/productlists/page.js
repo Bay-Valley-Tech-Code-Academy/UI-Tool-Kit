@@ -1,41 +1,6 @@
-const products = [
-  {
-    id: 1,
-    name: 'Bay Valley Tech T-Shirt',
-    href: 'product#',
-    imageSrc: '/images/bvt_shirt.png',
-    imageAlt: "Bay Valley Tech Shirt.",
-    price: 'Free at events!',
-    description: 'A comfortable T-shirt that gives you a sense of community...'
-  },
-  {
-    id: 2,
-    name: 'Bay Valley Tech Light Bulb',
-    href: 'product2#',
-    imageSrc: '/images/bvt_logo_bg.jpg',
-    imageAlt: "Bay Valley Tech Light Bulb.",
-    price: '$179.99',
-    description: 'The actual Bay Valley Tech light bulb from the logo!'
-  },
-  {
-    id: 3,
-    name: 'Bay Valley Tech Sweater',
-    href: 'product2#',
-    imageSrc: '/images/bvt_sweater.png',
-    imageAlt: "Bay Valley Tech Sweater.",
-    price: '$49.99',
-    description: 'A warm and cozy sweater, great for meet-ups.'
-  },
-  {
-    id: 4,
-    name: 'BVT Directors Autograph',
-    href: 'product2#',
-    imageSrc: '/images/bvt_director.png',
-    imageAlt: "Bay Valley Tech Directors Autograph.",
-    price: '$99.99',
-    description: 'A unique autograph from the BVT director himself!'
-  }
-]
+import products from '../data/products';
+
+
 export default function Example() {
   return (
     <div className="bg-gradient-to-r from-[#6503B2] via-[#3C04A7] to-[#000698]">
@@ -45,15 +10,15 @@ export default function Example() {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
-            <a
+              <a
               key={product.id}
-              href={product.href}
+              href={`/productlists/${product.id}`}
               className="group relative bg-gradient-to-b from-[#6369F3] to-[#8B33E3] shadow-lg rounded-[11px] block"
               style={{
-                boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
-                textDecoration: 'none',
+              boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
+              textDecoration: 'none',
               }}
-            >
+              >
               <div className="bg-[#290082] bg-opacity-40 rounded-[11px] p-4">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-[11px] bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img

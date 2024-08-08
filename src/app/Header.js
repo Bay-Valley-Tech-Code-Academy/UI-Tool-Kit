@@ -29,17 +29,11 @@ export default function Example() {
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
 
-          <a href="main#" className="text-sm font-semibold leading-6 text-gray-900">
-            Main Page
-          </a>
-          <a href="action#" className="text-sm font-semibold leading-6 text-gray-900">
-            Action Page
+          <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
+            Home
           </a>
           <a href="productlists#" className="text-sm font-semibold leading-6 text-gray-900">
             Product Lists
-          </a>
-          <a href="product#" className="text-sm font-semibold leading-6 text-gray-900">
-            Product Overview
           </a>
           <a href="cart#" className="text-sm font-semibold leading-6 text-gray-900">
             Shopping Cart
@@ -67,28 +61,16 @@ export default function Example() {
               <div className="space-y-2 py-6">
 
                 <a
-                  href="main#"
+                  href="/#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Main Page
-                </a>
-                <a
-                  href="action#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Action Page
+                  Home
                 </a>
                 <a
                   href="productlists#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Product Lists
-                </a>
-                <a
-                  href="product#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Product Overview
                 </a>
                 <a
                   href="cart#"
