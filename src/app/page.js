@@ -1,4 +1,4 @@
-import Box from '../components/Box/box.js'
+
 export default function Home() {
 
   return (

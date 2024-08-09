@@ -41,6 +41,9 @@ export default function Example() {
           <a href="about#" className="text-sm font-semibold leading-6 text-gray-900">
             About
           </a>
+          <a href="blog#" className="text-sm font-semibold leading-6 text-gray-900">
+            Blog
+          </a>
         </PopoverGroup>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -83,6 +86,12 @@ export default function Example() {
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   About
+                </a>
+                <a
+                  href="blog#"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Blog
                 </a>
               </div>
             </div>
