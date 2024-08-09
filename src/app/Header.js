@@ -16,7 +16,16 @@ export default function Example() {
 
   return (
     <header className="bg-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+        <div>
+          <a href="#">
+            <img 
+              src="https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/352217654_6317002281698799_670870340879095555_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=piDvIbaDQacQ7kNvgESxhY7&_nc_ht=scontent-sjc3-1.xx&oh=00_AYDXv94kQL55t8Kr4k4xpWHpS5gIje1HY4n1DjkmXfnFvA&oe=66BC143C"
+              alt="Bay Valley Tech logo"
+              className="w-12"
+            />
+          </a>
+        </div>
         <div className="flex justify-end">
           <PopoverGroup className="menu-items hidden lg:flex lg:gap-x-12">
             
