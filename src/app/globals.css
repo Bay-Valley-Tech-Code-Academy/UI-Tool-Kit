@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ----- NAV BAR ----- */
+.nav-bar {
+    background-color: #34A0A4;
+    color: #0c2a54;
+    border-bottom: 1px solid #D9ED92;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #title {
+    font-size: 30px;
+  }
+  .nav-items {
+    display: flex;
+    margin: 7px;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+  #nav-item {
+    padding: 7px;
+    margin: 7px;
+    border: solid 3px #0c2a54;
+    background-color: #D9ED92;
+    box-shadow: -5px 5px #0c2a54;
+    color: #0c2a54;
+    font-weight: bold;
+  }
+
+  /* ----- LINK STUFF ----- */
+a:link { text-decoration: none; }
+a:visited { 
+  text-decoration: none; 
+  color: #0c2a54;
+}
+a:hover { 
+  text-decoration: none; 
+  color:#17b3a4; 
+}
