@@ -5,6 +5,7 @@ import {
   Dialog,
   DialogPanel,
   PopoverGroup,
+  Transition
 } from '@headlessui/react'
 import {
   Bars3Icon,
@@ -17,46 +18,64 @@ export default function Example() {
   return (
     <header className="bg-white">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+        <div className="flex justify-start">
+          <a href="/#">
+            <img 
+              src="https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/352217654_6317002281698799_670870340879095555_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=piDvIbaDQacQ7kNvgESxhY7&_nc_ht=scontent-sjc3-1.xx&oh=00_AYDXv94kQL55t8Kr4k4xpWHpS5gIje1HY4n1DjkmXfnFvA&oe=66BC143C"
+              alt="Bay Valley Tech logo"
+              className="w-12"
+            />
+          </a>
+        </div>
+        <div className="hidden lg:flex flex-1 justify-end">
+          <PopoverGroup className="menu-items hidden lg:flex lg:gap-x-14">
+            
+            <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
+              Home
+            </a>
+            <a href="productlists#" className="text-sm font-semibold leading-6 text-gray-900">
+              Product Lists
+            </a>
+            <a href="cart#" className="text-sm font-semibold leading-6 text-gray-900">
+              Shopping Cart
+            </a>
+            <a href="about#" className="text-sm font-semibold leading-6 text-gray-900">
+              About
+            </a>
+          </PopoverGroup>
+        </div>
         <div className="flex lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="hamburger-icon -m-2.5 inline-flex items-center justify-end rounded-md p-2.5 text-gray-700"
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-
-          <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
-            Home
-          </a>
-          <a href="productlists#" className="text-sm font-semibold leading-6 text-gray-900">
-            Product Lists
-          </a>
-          <a href="cart#" className="text-sm font-semibold leading-6 text-gray-900">
-            Shopping Cart
-          </a>
-          <a href="about#" className="text-sm font-semibold leading-6 text-gray-900">
-            About
-          </a>
-          <a href="blog#" className="text-sm font-semibold leading-6 text-gray-900">
-            Blog
-          </a>
-        </PopoverGroup>
       </nav>
+
+      <Transition
+        show={mobileMenuOpen}
+        enter="transition ease-out duration-200"
+        enterFrom="opacity-0 transform translate-x-full"
+        enterTo="opacity-100 transform translate-x-0"
+        leave="transition ease-in duration-100"
+        leaveFrom="opacity-100 transform translate-x-0"
+        leaveTo="opacity-0 transform translate-x-full"
+      >
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-end">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
             >
               <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+              <XMarkIcon aria-hidden="true" className="h-6 w-6 p-0" />
             </button>
           </div>
           <div className="mt-6 flow-root">
@@ -65,25 +84,25 @@ export default function Example() {
 
                 <a
                   href="/#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Home
                 </a>
                 <a
                   href="productlists#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Product Lists
                 </a>
                 <a
                   href="cart#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Shopping Cart
                 </a>
                 <a
                   href="about#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   About
                 </a>
@@ -98,6 +117,7 @@ export default function Example() {
           </div>
         </DialogPanel>
       </Dialog>
+      </Transition>
     </header>
   )
 }
