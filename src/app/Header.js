@@ -16,32 +16,34 @@ export default function Example() {
 
   return (
     <header className="bg-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl p-6 lg:px-8">
+        <div className="flex justify-end">
+          <PopoverGroup className="menu-items hidden lg:flex lg:gap-x-12">
+            
+            <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
+              Home
+            </a>
+            <a href="productlists#" className="text-sm font-semibold leading-6 text-gray-900">
+              Product Lists
+            </a>
+            <a href="cart#" className="text-sm font-semibold leading-6 text-gray-900">
+              Shopping Cart
+            </a>
+            <a href="about#" className="text-sm font-semibold leading-6 text-gray-900">
+              About
+            </a>
+          </PopoverGroup>
+        </div>
         <div className="flex lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="hamburger-icon -m-2.5 inline-flex items-center justify-end rounded-md p-2.5 text-gray-700"
           >
             <span className="sr-only">Open main menu</span>
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-
-          <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
-            Home
-          </a>
-          <a href="productlists#" className="text-sm font-semibold leading-6 text-gray-900">
-            Product Lists
-          </a>
-          <a href="cart#" className="text-sm font-semibold leading-6 text-gray-900">
-            Shopping Cart
-          </a>
-          <a href="about#" className="text-sm font-semibold leading-6 text-gray-900">
-            About
-          </a>
-        </PopoverGroup>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-10" />
