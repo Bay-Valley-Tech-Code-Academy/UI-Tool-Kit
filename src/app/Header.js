@@ -5,6 +5,7 @@ import {
   Dialog,
   DialogPanel,
   PopoverGroup,
+  Transition
 } from '@headlessui/react'
 import {
   Bars3Icon,
@@ -54,17 +55,27 @@ export default function Example() {
           </button>
         </div>
       </nav>
+
+      <Transition
+        show={mobileMenuOpen}
+        enter="transition ease-out duration-200"
+        enterFrom="opacity-0 transform translate-x-full"
+        enterTo="opacity-100 transform translate-x-0"
+        leave="transition ease-in duration-100"
+        leaveFrom="opacity-100 transform translate-x-0"
+        leaveTo="opacity-0 transform translate-x-full"
+      >
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-end">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
             >
               <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="h-6 w-6 xs:mr-4 sm:ml-80" />
+              <XMarkIcon aria-hidden="true" className="h-6 w-6 p-0" />
             </button>
           </div>
           <div className="mt-6 flow-root">
@@ -100,6 +111,7 @@ export default function Example() {
           </div>
         </DialogPanel>
       </Dialog>
+      </Transition>
     </header>
   )
 }
