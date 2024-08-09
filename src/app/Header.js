@@ -26,7 +26,7 @@ export default function Example() {
             />
           </a>
         </div>
-        <div className="hidden lg:flex flex-1 justify-center">
+        <div className="hidden lg:flex flex-1 justify-end">
           <PopoverGroup className="menu-items hidden lg:flex lg:gap-x-14">
             
             <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
@@ -64,7 +64,7 @@ export default function Example() {
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
             >
               <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+              <XMarkIcon aria-hidden="true" className="h-6 w-6 xs:mr-4 sm:ml-80" />
             </button>
           </div>
           <div className="mt-6 flow-root">
@@ -73,25 +73,25 @@ export default function Example() {
 
                 <a
                   href="/#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Home
                 </a>
                 <a
                   href="productlists#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Product Lists
                 </a>
                 <a
                   href="cart#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Shopping Cart
                 </a>
                 <a
                   href="about#"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base text-right font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   About
                 </a>
