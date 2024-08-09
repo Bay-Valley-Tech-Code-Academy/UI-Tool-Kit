@@ -13,7 +13,7 @@ export default function ProductList() {
               <a
               key={product.id}
               href={`/productlists/${product.id}`}
-              className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block"
+              className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block opacity-90"
               style={{
               boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
               textDecoration: 'none',

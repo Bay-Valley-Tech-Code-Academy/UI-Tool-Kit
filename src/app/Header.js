@@ -16,7 +16,7 @@ export default function Example() {
 
   return (
     <header className="bg-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-end p-6 lg:px-8">
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -28,17 +28,16 @@ export default function Example() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-
-          <a href="/#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Home
           </a>
-          <a href="productlists#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/productlists" className="text-sm font-semibold leading-6 text-gray-900">
             Product Lists
           </a>
-          <a href="cart#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/cart" className="text-sm font-semibold leading-6 text-gray-900">
             Shopping Cart
           </a>
-          <a href="about#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/about" className="text-sm font-semibold leading-6 text-gray-900">
             About
           </a>
         </PopoverGroup>
@@ -59,27 +58,26 @@ export default function Example() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-
                 <a
-                  href="/#"
+                  href="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Home
                 </a>
                 <a
-                  href="productlists#"
+                  href="/productlists"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Product Lists
                 </a>
                 <a
-                  href="cart#"
+                  href="/cart"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Shopping Cart
                 </a>
                 <a
-                  href="about#"
+                  href="/about"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   About
