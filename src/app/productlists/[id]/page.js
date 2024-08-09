@@ -22,7 +22,6 @@ export default function ProductPage() {
     ];
   }
   
-  
   const [cart, setCart] = useState([]);
   const router = useRouter();
 
@@ -45,48 +44,48 @@ export default function ProductPage() {
     router.push('/cart');
   };
    
-
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64]">
       <div className="pt-6">
         {/* Image */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-          <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
+          <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
               alt={product.imageAlt}
               src={product.imageSrc}
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-cover object-center rounded-[11px] shadow-lg"
+              style={{ boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)' }}
             />
           </div>
         </div>
 
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-          <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+          <div className="lg:col-span-2 lg:border-r lg:border-[#392F5A] lg:pr-8">
+            <h1 className="text-3xl font-bold tracking-tight text-white">{product.name}</h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <p className="text-3xl font-bold tracking-tight text-white">{product.price}</p>
 
             <form className="mt-10" onSubmit={(e) => { e.preventDefault(); handleAddToCart(); }}>
               <button
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFF8F0] px-8 py-3 text-base font-medium text-[#392F5A] hover:bg-[#F2E6D7] focus:outline-none focus:ring-2 focus:ring-[#392F5A] focus:ring-offset-2"
               >
                 Add to bag
               </button>
             </form>
           </div>
 
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-[#392F5A] lg:pb-16 lg:pr-8 lg:pt-6">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>
               <div className="space-y-6">
-                <p className="text-base text-gray-900">{product.description}</p>
+                <p className="text-base text-white">{product.description}</p>
               </div>
             </div>
           </div>
