@@ -55,10 +55,11 @@ footer {
 }
 .footer-logo {
   flex: 0.5;
+  padding-top: 20px;
 }
 .footer-columns {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex: 3;
 }
 .footer-column {
