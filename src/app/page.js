@@ -41,7 +41,7 @@ export default function Home() {
 
       
 
-      <a href="about#" className="flex justify-center rounded-lg   bg-indigo-500  pt-5  text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 visited:text-gray-100" >
+      <a href="story" className="flex justify-center rounded-lg   bg-indigo-500  pt-5  text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 " >
       
             Learn Our Story <span aria-hidden="true"></span>
             
@@ -50,9 +50,6 @@ export default function Home() {
 
 
   </div>
-
- {/* < img alt="Bay Valley Tech Light Bulb." src="/images/bvt_logo_bg.jpg" class=" h-10 w-10 object-cover object-right lg:h-5 lg:w-5">
- </img> */}
 
   </div>
 
