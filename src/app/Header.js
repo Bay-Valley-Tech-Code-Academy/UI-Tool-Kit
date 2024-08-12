@@ -40,6 +40,9 @@ export default function Example() {
           <a href="/about" className="text-sm font-semibold leading-6 text-gray-900">
             About
           </a>
+          <a href="/blog" className="text-sm font-semibold leading-6 text-gray-900">
+            Blog
+          </a>
         </PopoverGroup>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">

@@ -14,6 +14,7 @@ export default function Navbar() {
                 <button className="hover:bg-gradient-to-r from-indigo-500 to-violet-700 p-3 rounded-lg drop-shadow-xl">Product List</button>
                 <button className="hover:bg-gradient-to-r from-indigo-500 to-purple-600 p-3 rounded-lg drop-shadow-xl">Cart</button>
                 <button className="hover:bg-gradient-to-r from-indigo-500 to-violet-700 p-3 rounded-lg drop-shadow-xl">About</button>
+                <button className="hover:bg-gradient-to-r from-indigo-500 to-violet-700 p-3 rounded-lg drop-shadow-xl">Blog</button>
                 <button className="hover:bg-gradient-to-r from-indigo-500 to-violet-700 p-3 rounded-lg drop-shadow-xl">Contact Us</button>
             </div>
         </nav>
