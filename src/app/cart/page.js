@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import { useRouter } from 'next/navigation';
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
@@ -62,7 +62,15 @@ export default function Cart() {
               </button>
             </>
           ) : (
-            <p className="text-base text-gray-900">Your cart is empty.</p>
+            <>
+              <p className="text-base text-gray-900">Your cart is empty.</p>
+              <button
+                onClick={() => router.push('/productlists')}
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
+                Check out the products!
+              </button>
+            </>
           )}
         </div>
       </div>
