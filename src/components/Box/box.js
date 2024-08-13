@@ -2,12 +2,12 @@ import { UserCircleIcon } from "@heroicons/react/24/outline"
 
 export default function Box(itemData) {
   return (
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-rows-2">
-          <div className="-mt-2 p-2 lg:mt-0 lg:w-full gap-x-6">
+     
+          <div className="-mt-2 p-2 mr-2 lg:mt-0 gap-x-6 grid lg:grid-flow-col grid-flow-row auto-cols-max justify-center gap-4">
             
             {itemData.map((item, i) => (
-              <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-row lg:justify-center gap-x-6" key={i}>
-                <div className="mx-auto max-w-xs " >
+              <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 gap-x-6" key={i}>
+                <div className="mx-2 max-w-xs " >
                   <p className="mt-6 flex items-baseline justify-center gap-x-2 px-[5rem]">
                     <span className="text-5xl font-bold tracking-tight text-gray-900">{item.description}</span>
                   </p>
@@ -26,6 +26,6 @@ export default function Box(itemData) {
               ))}
             
           </div>
-        </div>
+
   )
 }

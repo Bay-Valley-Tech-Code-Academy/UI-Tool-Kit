@@ -28,15 +28,15 @@ export default function Blog() {
         className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
       />
     </div>
-    <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="mx-auto max-w-[80vw] px-6  lg:px-8">
       <div className="mx-auto max-w-2xl lg:mx-0">
         <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Bay Valley Tech Blog</h2>
-        <p className="mt-6 text-lg leading-8 text-gray-300">
+        <p className="mt-6 text-lg leading-8 text-gray-300 pb-8">
         Blog posts all about Bay Valley Tech
         </p>
       </div>
      
-      <div className="mt-10 flex items-center justify-center flex-col lg:flex-row">
+      <div className="max-w-[80vw]">
         {Box(itemData)}
       </div>
     </div>
