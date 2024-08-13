@@ -42,3 +42,44 @@ a:hover {
   text-decoration: none; 
   color:#17b3a4; 
 }
+/* ----- FOOTER ----- */
+footer {
+  background-color: #392F5A;
+  color: white;
+  padding: 2rem;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.footer-logo {
+  flex: 0.5;
+  padding-top: 20px;
+}
+.footer-columns {
+  display: flex;
+  justify-content: space-evenly;
+  flex: 3;
+}
+.footer-column {
+  margin-right: 1rem;
+}
+.footer-column h4 {
+  margin-bottom: 1rem;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+.footer-column ul li a:hover {
+  color: white;
+  text-decoration: underline;
+}
