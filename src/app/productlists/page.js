@@ -6,7 +6,7 @@ export default function ProductList() {
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64]">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
-        <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md">
+        <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md hidden sm:block sm:mt-28 md:mt-16 lg:mt-20">
           <Menu>
             <MenuButton className="inline-flex gap-3">
               <p className="font-medium text-lg">Categories</p>
@@ -15,28 +15,28 @@ export default function ProductList() {
             <MenuItems
               transition
               anchor="bottom left"
-              className="origin-top-right border border-white/5 bg-[#FFF8F0] -mt-1 p-4 w-40 rounded-md"
+              className="origin-top-right border border-white/5 bg-[#FFF8F0] mt-2 p-4 rounded-md w-40"
             >
               <MenuItem>
-                <button className="group flex p-1 data-[focus]:bg-grey/50">
+                <button className="group flex w-full p-1 hover:bg-neutral-300">
                   Items
                 </button>
               </MenuItem>
               <div className="my-1 h-px bg-black/5" />
               <MenuItem>
-                <button className="group flex p-1">
+                <button className="group flex w-full p-1 hover:bg-neutral-200">
                   Hoodies
                 </button>
               </MenuItem>
               <div className="my-1 h-px bg-black/5" />
               <MenuItem>
-                <button className="group flex p-1">
+                <button className="group flex w-full p-1 hover:bg-neutral-200">
                   Shirts
                 </button>
               </MenuItem>
               <div className="my-1 h-px bg-black/5" />
               <MenuItem>
-                <button className="group flex p-1">
+                <button className="group flex w-full p-1 hover:bg-neutral-200">
                   Miscellaneous
                 </button>
               </MenuItem>
