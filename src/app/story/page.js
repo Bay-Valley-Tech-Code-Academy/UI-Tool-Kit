@@ -37,7 +37,7 @@ export default function Example() {
             <div className=" mt-10 flex items-center justify-center gap-x-6 p-10" style={{gap:'10rem'}}  >
               <a
                 href="https://www.raymusfoundation.org/focuses/"
-                className=" rounded-full w-30 h-30 bg-gray-100 px-5 pt-py-20 text-sm font-semibold text-white shadow-sm  hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
+                className="  w-30 h-30 bg-gray-100 px-5 pt-py-20 text-sm font-semibold text-white shadow-sm  hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
               
                 <div>
                         <img alt="" src="https://th.bing.com/th/id/OIP.TWVV36xkbMFDuEQ2UVk-6gHaBr?pid=ImgDet&w=168&h=37.92&c=7&dpr=1.3">
@@ -62,7 +62,7 @@ export default function Example() {
             <div className="  h-50 w-50 ">
 
                         <p className="text-white">
-                            Bay Valley Tech also works closely with CSU Stanislaus and Stanislaus County WorkForce Develpment
+                            Bay Valley Tech also works closely with CSU Stanislaus and Stanislaus County WorkForce Development
                         </p>
 
                     <div className =" columns-2 ">
