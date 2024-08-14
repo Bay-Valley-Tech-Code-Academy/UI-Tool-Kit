@@ -24,7 +24,8 @@ export default async function ProductPage({ params }) {
   }
 
   return (
-    <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64]">
+    <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">
+      <ArrowUturnLeftIcon className="size-12 stroke-white ml-6" />
       <div className="pt-6">
         {/* Image */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
