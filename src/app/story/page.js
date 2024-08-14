@@ -28,25 +28,77 @@ export default function Example() {
         </div>
         <div className=" mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Our story</h2>
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Our Achievements!</h2>
 
             <p className="mt-6 text-lg leading-8 text-gray-300">
-                 Bay Valley Tech  was founded by Phillip Lan in 2018. Bay Valley Tech provides a low-barrier pathway into lucrative technology careers.
-                   Bay Valley Tech serves a diverse group of students across California, Hawaii, Washington, Arizona, Texas and many other states, both in-person and remotely!
+                Bay Valley Tech works with a variety of charities such as  The Raymus Foundation   and The Salvation Army         
             </p>
 
-          </div>
-  
-          
-  
+            <div className=" mt-10 flex items-center justify-center gap-x-6 p-10" style={{gap:'10rem'}}  >
+              <a
+                href="https://www.raymusfoundation.org/focuses/"
+                className=" rounded-full w-30 h-30 bg-gray-100 px-5 pt-py-20 text-sm font-semibold text-white shadow-sm  hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
               
-  
-                  
+                <div>
+                        <img alt="" src="https://th.bing.com/th/id/OIP.TWVV36xkbMFDuEQ2UVk-6gHaBr?pid=ImgDet&w=168&h=37.92&c=7&dpr=1.3">
+                        </img>
+                </div> 
+              </a>
+
+                
+
+              <a
+                href="https://www.salvationarmyusa.org/usn/"
+                className=" rounded-full w-30 h-auto px-30 pt-py-20 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
+              
+                <div>
+                        <img  alt=""  src="https://salvationarmyowensound.ca/wp-content/uploads/2022/03/salvation-army-logo-crest-270px.png">
+                        </img>
+                </div> 
+              </a>
+
+        </div>
+
+            <div className="  h-50 w-50 ">
+
+                        <p className="text-white">
+                            Bay Valley Tech also works closely with CSU Stanislaus and Stanislaus County WorkForce Develpment
+                        </p>
+
+                    <div className =" columns-2 ">
+
+                  <a
+                      href="https://www.csustan.edu/"
+                      className=" rounded-full w-10 h-10 px-5 pt-py-20 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
+                    
+                      <div>
+                              <img alt="" src="https://th.bing.com/th/id/OIP.xZXq1Wn01GS3UEL7FXiVUwHaHa?pid=ImgDet&w=179&h=179&c=7&dpr=1.3">
+                              </img>
+                      </div> 
+                    </a>
+
+                    <a
+                      href="https://www.stanworkforce.com"
+                      className=" rounded-full w-10 h-10 px-5 pt-py-5 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
+                    
+                      <div>
+                              <img alt="" src="https://www.stanworkforce.com/media/4r2hvtgx/logo_light.png">
+                              </img>
+                      </div> 
+                    </a>
+
+                   
+
+                    </div>
+
+                    
+                    
+              </div>
+
+
+          </div>        
   
         </div>
-  
-                
-  
       </div>
     )
   }
