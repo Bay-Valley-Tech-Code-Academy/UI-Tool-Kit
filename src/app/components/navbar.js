@@ -4,7 +4,13 @@ import Image from 'next/image'
 export default function Navbar() {
 
     return (
+        
+            
+
         <nav className="md:flex sticky bg-indigo-900 opacity-100 p-4 px-20 gap-50">
+
+            
+            
             <div className="flex justify-start">
                 <Image src='/images/bvt-logo.png' className="w-14 rounded-full" />
             </div>
