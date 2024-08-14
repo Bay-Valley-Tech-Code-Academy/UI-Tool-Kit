@@ -1,3 +1,7 @@
+## PREREQUISITES
+1. Install PostgreSQL. (Uncheck 'Stack builder' and 'pgAdmin' when installing, we don't need those.)
+2. Install the PostgreSQL Explorer by Chris Kolkman on VS Code.
+
 ## SETUP
 After cloning the repo:
 1. Navigate to UI-Tool-Kit in terminal by typing ```cd UI-Tool-Kit```.
