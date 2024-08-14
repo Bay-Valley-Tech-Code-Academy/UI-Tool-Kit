@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import bvtlogo from '../images/bvt-logo.png'
 
 export default function Navbar() {
 
@@ -13,9 +12,7 @@ export default function Navbar() {
             
             
             <div className="flex justify-start">
-                
-
-                <Image src={bvtlogo} className="w-14 rounded-full" />
+                <Image src='/images/bvt-logo.png' className="w-14 rounded-full" />
             </div>
             <div className="flex flex-1 justify-center gap-7 mt-1 text-white font-medium text-xl">
                 <button className="hover:bg-gradient-to-r from-indigo-500 to-violet-700 p-3 rounded-lg drop-shadow-xl">Home</button>
