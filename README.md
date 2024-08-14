@@ -1,6 +1,7 @@
 ## PREREQUISITES
 1. Install PostgreSQL. (Uncheck 'Stack builder' and 'pgAdmin' when installing, we don't need those.)
 2. Install the PostgreSQL Explorer by Chris Kolkman on VS Code.
+3. In terminal, type 'psql -U postgres -f src/app/data/create_database.sql'. This creates the database for you.
 
 ## SETUP
 After cloning the repo:
