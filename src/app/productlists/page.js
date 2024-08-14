@@ -14,7 +14,7 @@ export default function ProductList() {
   }, []);
 
   return  (
-    <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] overflow-y-auto h-screen">
+    <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] h-screen">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
         <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md sm:block sm:mt-28 md:mt-16 lg:mt-20">
           <Menu as="div">
