@@ -1,49 +1,28 @@
-'use client';
+import pool from "../../data/postgres";
+import AddToCartButton from './AddToCartButton'; // Adjust the import path as needed
 
-import { useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
-import products from '../../data/products'; // Adjust the import path as needed
+export default async function ProductPage({ params }) {
+  const { id } = params;
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+  let product;
 
-export default function ProductPage() {
-  const { id } = useParams(); // Get the id from the URL
-  const product = products.find((p) => p.id === parseInt(id)); // Find the product by id
+  try {
+    const client = await pool.connect();
+    console.log("Connected to the database!");
 
-  // Ensure product has images property if not included in products.js
-  if (!product.images) {
-    product.images = [
-      {
-        src: product.imageSrc,
-        alt: product.imageAlt,
-      },
-    ];
+    const result = await client.query("SELECT * FROM productlist WHERE id = $1", [id]);
+    product = result.rows[0]; // Fetch the first (and should be the only) result
+
+    client.release(); // Release the client back to the pool
+  } catch (error) {
+    console.log("Error fetching data: ", error);
+    product = null;
   }
-  
-  const [cart, setCart] = useState([]);
-  const router = useRouter();
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
-  const handleAddToCart = () => {
-    // Retrieve the existing cart from localStorage
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Add the new product to the cart
-    const newCart = [...existingCart, product];
-    
-    // Save the updated cart back to localStorage
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    
-    // Redirect to the shopping cart page
-    router.push('/cart');
-  };
-   
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64]">
       <div className="pt-6">
@@ -51,8 +30,8 @@ export default function ProductPage() {
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
           <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
-              alt={product.imageAlt}
-              src={product.imageSrc}
+              alt={product.imagealt}
+              src={product.imagesrc}
               className="h-full w-full object-cover object-center rounded-[11px] shadow-lg"
               style={{ boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)' }}
             />
@@ -70,14 +49,7 @@ export default function ProductPage() {
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl font-bold tracking-tight text-white">{product.price}</p>
 
-            <form className="mt-10" onSubmit={(e) => { e.preventDefault(); handleAddToCart(); }}>
-              <button
-                type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFF8F0] px-8 py-3 text-base font-medium text-[#392F5A] hover:bg-[#F2E6D7] focus:outline-none focus:ring-2 focus:ring-[#392F5A] focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
-            </form>
+            <AddToCartButton product={product} />
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-[#392F5A] lg:pb-16 lg:pr-8 lg:pt-6">

@@ -7,6 +7,8 @@ export default function Cart() {
   const [cart, setCart] = useState([]);
   const router = useRouter();
 
+  console.log("Cart: ", cart)
+
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
@@ -30,10 +32,10 @@ export default function Cart() {
               <ul>
                 {cart.map((item, index) => (
                   <li key={index} className="border-t border-b border-gray-200 py-6 flex items-center space-x-4">
-                    {item.images && item.images.length > 0 ? (
+                    {item.imagesrc.length > 0 ? (
                       <img
-                        src={item.images[0].src}
-                        alt={item.images[0].alt}
+                        src={item.imagesrc}
+                        alt={item.imagealt}
                         className="h-16 w-16 object-cover object-center"
                       />
                     ) : (
