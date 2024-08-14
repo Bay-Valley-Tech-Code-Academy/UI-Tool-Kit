@@ -11,7 +11,6 @@ export default function Home() {
       
 
     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-[11px]bg-gray-200 lg:aspect-none group-hover:opacity-75">
-        <img alt="Bay Valley Tech Light Bulb." src="/images/bvt_logo_bg.jpg" class=" h-10 w-10 object-cover object-center lg:h-20 lg:w-20"></img>
 
 
     <div className="bg-[#392F5A]">
