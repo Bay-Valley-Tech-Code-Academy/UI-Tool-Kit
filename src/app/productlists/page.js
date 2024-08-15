@@ -4,8 +4,30 @@ import { useEffect } from 'react';
 import products from '../data/products';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { PlusSmallIcon } from '@heroicons/react/24/outline';
+import { useRouter } from 'next/navigation';
 
 export default function ProductList() {
+  const router = useRouter();
+
+  const handleAddToCart = (product) => {
+    // Retrieve the existing cart from localStorage
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Add the new product to the cart
+    const newCart = [...existingCart, product];
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem('cart', JSON.stringify(newCart));
+
+    // Redirect to the shopping cart page
+    router.push('/cart');
+  };
+
+  const handleProductClick = (productId) => {
+    // Navigate to the product detail page
+    router.push(`/productlists/${productId}`);
+  };
+
   useEffect(() => {
     return () => {
       // Clean up the class on component unmount
@@ -72,14 +94,14 @@ export default function ProductList() {
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
-              <a
+              <div
                 key={product.id}
-                href={`/productlists/${product.id}`}
                 className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px]" // Set a maximum height
                 style={{
                   boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
                   textDecoration: 'none',
                 }}
+                onClick={() => handleProductClick(product.id)} // Handle click for product details
               >
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-48"> {/* Reduced height */}
                   <img
@@ -97,14 +119,24 @@ export default function ProductList() {
                   </p>
                 </div>
                 <div className="flex justify-between p-2 items-center"> {/* Footer section */}
-                  <button className="bg-[#392F5A] text-white px-4 py-2 rounded-md">
+                  <button 
+                    className="bg-[#392F5A] text-white px-4 py-2 rounded-md hover:bg-[#2F274D] active:bg-[#261E40] transition duration-150 ease-in-out"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering the product detail click
+                      handleAddToCart({
+                        ...product,
+                        imageSrc: product.imageSrc,  // Ensure imageSrc is included
+                        imageAlt: product.imageAlt,  // Ensure imageAlt is included
+                      });
+                    }}
+                  >
                     Add to cart
                   </button>
                   <p className="text-sm font-medium text-[#392F5A] ml-4">
                     {product.price}
                   </p>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
