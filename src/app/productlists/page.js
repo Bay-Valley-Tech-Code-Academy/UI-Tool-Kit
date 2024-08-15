@@ -7,7 +7,7 @@ export default async function ProductList() {
     const client = await pool.connect();
     console.log("Connected to the database!");
 
-    const result = await client.query("SELECT * FROM productlist");
+    const result = await client.query("SELECT * FROM products");
     products = result.rows;
 
     client.release(); // Release the client back to the pool
