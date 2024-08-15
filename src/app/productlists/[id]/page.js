@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
 import products from '../../data/products'; // Adjust the import path as needed
+import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -47,7 +48,9 @@ export default function ProductPage() {
    
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">
-      <ArrowUturnLeftIcon className="size-12 stroke-white ml-6" />
+      <Link href="/productlists">
+        <ArrowUturnLeftIcon className="size-12 stroke-white ml-6" />
+      </Link>
       <div className="pt-6">
         {/* Image */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
