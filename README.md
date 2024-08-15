@@ -4,9 +4,19 @@
  * If you get an error, then open your environment variables, and add ```C:\Program Files\PostgreSQL\16\lib``` and ```C:\Program Files\PostgreSQL\16\bin``` to your system variables PATH.
  * Open and close Command Promp, try ```psql``` again. (If issues persist, message me if you need help.)
  * In cmd, type ```psql -U postgres```. Press enter, then enter your password. If this all works, you're good to go!
+2. Create a .env file in the base folder. Put this inside:
+
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=[your postgreSQL password here]
+DB_NAME=productlist
+
+```
 2. In terminal, type ```psql -U postgres -f src/app/data/create_database.sql```. This creates the database for you.
 3. Install the PostgreSQL Explorer by Chris Kolkman on VS Code.
-* Once you install this, follow the instructions here to create a connection to the database: https://youtu.be/ezjoDYs72GA?si=0U7jKxL2xwNuQ5YR&t=680
+* Once you install this, follow the instructions here to create a connection to the database: https://youtu.be/ezjoDYs72GA?si=0U7jKxL2xwNuQ5YR&t=680 . The instruction ends at 13:20.
 
 ## SETUP
 After cloning the repo:
