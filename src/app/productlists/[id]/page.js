@@ -10,7 +10,7 @@ export default async function ProductPage({ params }) {
     const client = await pool.connect();
     console.log("Connected to the database!");
 
-    const result = await client.query("SELECT * FROM productlist WHERE id = $1", [id]);
+    const result = await client.query("SELECT * FROM products WHERE id = $1", [id]);
     product = result.rows[0]; // Fetch the first (and should be the only) result
 
     client.release(); // Release the client back to the pool
