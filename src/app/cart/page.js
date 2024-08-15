@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useState, useEffect } from "react";
 import Decimal from "decimal.js";
 import { useRouter } from "next/navigation"; // Import useRouter for navigation
@@ -44,7 +43,7 @@ export default function Cart() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64]">
+    <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] custom-height">
       <div className="p-6 lg:ml-20 lg:mr-20">
         <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
           Shopping Cart

@@ -14,10 +14,13 @@ import {
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  return (
+  return (   
     <header className="bg-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-end p-6 lg:px-8">
+      <nav aria-label="Global" className=" flex w-full items-center justify-between p-6 lg:px-8">
+      <img alt="Bay Valley Tech Light Bulb." src="/images/bvt-logo.png" className=" h-10 w-10 object-cover object-center lg:h-20 lg:w-20"></img>
         <div className="flex lg:hidden">
+
+
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
@@ -27,7 +30,11 @@ export default function Example() {
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
+
+        
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+        
+        
           <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
             Home
           </a>

@@ -5,7 +5,7 @@ export default function Template({ children }) {
     return (
         <>
         <Header />
-        <div>{children}</div>
+        {children}
         </>
     )
   }
