@@ -13,7 +13,7 @@ export default function ProductList() {
     };
   }, []);
 
-  return  (
+  return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] h-screen">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
         <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md sm:block sm:mt-28 md:mt-16 lg:mt-20">
@@ -75,29 +75,34 @@ export default function ProductList() {
               <a
                 key={product.id}
                 href={`/productlists/${product.id}`}
-                className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block opacity-90"
+                className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px]" // Set a maximum height
                 style={{
                   boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
                   textDecoration: 'none',
                 }}
               >
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-[11px] bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-48"> {/* Reduced height */}
                   <img
                     alt={product.imageAlt}
                     src={product.imageSrc}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
-                <div className="mt-4 p-4 text-center">
-                  <h3 className="text-lg font-bold text-[#392F5A]">
+                <div className="flex-grow p-2"> {/* Reduced padding */}
+                  <h3 className="text-lg font-bold text-[#392F5A] text-left">
                     {product.name}
                   </h3>
-                  <p className="mt-2 text-sm text-[#392F5A]">
+                  <p className="mt-1 text-sm text-[#392F5A] text-left">
                     {product.description}
                   </p>
-                  <div className="mt-4 text-sm font-medium text-[#392F5A]">
+                </div>
+                <div className="flex justify-between p-2 items-center"> {/* Footer section */}
+                  <button className="bg-[#392F5A] text-white px-4 py-2 rounded-md">
+                    Add to cart
+                  </button>
+                  <p className="text-sm font-medium text-[#392F5A] ml-4">
                     {product.price}
-                  </div>
+                  </p>
                 </div>
               </a>
             ))}
