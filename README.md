@@ -5,7 +5,7 @@
  * Open and close Command Promp, try ```psql``` again. (If issues persist, message me if you need help.)
  * In cmd, type ```psql -U postgres```. Press enter, then enter your password. If this all works, you're good to go!
 2. Install the PostgreSQL Explorer by Chris Kolkman on VS Code.
-3. In terminal, type 'psql -U postgres -f src/app/data/create_database.sql'. This creates the database for you.
+3. In terminal, type ```psql -U postgres -f src/app/data/create_database.sql```. This creates the database for you.
 
 ## SETUP
 After cloning the repo:
