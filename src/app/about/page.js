@@ -4,6 +4,18 @@ export default function Example() {
 
       <div
         aria-hidden="true"
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url('https://texturelabs.org/wp-content/uploads/Texturelabs_Metal_124S.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.3,
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div
+        aria-hidden="true"
         className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
       >
         <div
@@ -26,7 +38,7 @@ export default function Example() {
           className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
         />
       </div>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Bay Valley Tech</h2>
           <p className="mt-6 text-lg leading-8 text-gray-300">
