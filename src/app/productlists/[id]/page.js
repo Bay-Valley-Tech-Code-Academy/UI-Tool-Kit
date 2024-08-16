@@ -56,9 +56,9 @@ export default function ProductPage() {
           <p className="text-white hover:underline underline-offset-2">Return to product list</p>
         </Link>
       </div>
-      <div className="pt-6">
+      <div className="pt-6 grid grid-cols-2">
         {/* Image */}
-        <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+        <div className="mx-auto mt-6 sm:px-6 lg:w-2/3 g:gap-x-8 lg:px-8">
           <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
               alt={product.imageAlt}
@@ -70,13 +70,13 @@ export default function ProductPage() {
         </div>
 
         {/* Product info */}
-        <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-          <div className="lg:col-span-2 lg:border-r lg:border-[#392F5A] lg:pr-8">
+        <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+          <div className="lg:border-r lg:border-[#392F5A] lg:pr-8">
             <h1 className="text-3xl font-bold tracking-tight text-white">{product.name}</h1>
           </div>
 
           {/* Options */}
-          <div className="mt-4 lg:row-span-3 lg:mt-0">
+          <div className="mt-4 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl font-bold tracking-tight text-white">{product.price}</p>
 
@@ -90,7 +90,7 @@ export default function ProductPage() {
             </form>
           </div>
 
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-[#392F5A] lg:pb-16 lg:pr-8 lg:pt-6">
+          <div className="py-10 lg:border-r lg:border-[#392F5A] lg:pb-16 lg:pr-8 lg:pt-6">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>
