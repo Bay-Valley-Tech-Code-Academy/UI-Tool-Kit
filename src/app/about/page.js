@@ -1,7 +1,26 @@
 
 export default function Example() {
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+
+
+    
+<div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+
+  
+<div
+        aria-hidden="true"
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url('https://texturelabs.org/wp-content/uploads/Texturelabs_Metal_124S.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.3,
+          pointerEvents: 'none',
+        }}
+      />
+      
+
+
 
       <div
         aria-hidden="true"
@@ -30,7 +49,7 @@ export default function Example() {
       <div className=" mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Bay Valley Tech</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
+          <p className=" xs:text-xl sm:text-lg mt-6 text-lg leading-8 text-gray-300">
           Bay Valley Tech is a fast-growing tech incubator, tech community and digital workforce training program.
           </p>
         </div>

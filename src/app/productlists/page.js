@@ -13,6 +13,8 @@ export default function ProductList() {
     };
   }, []);
 
+    
+
   return  (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] overflow-y-auto h-screen">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
