@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import products from '../../data/products'; // Adjust the import path as needed
 import Link from "next/link";
 
@@ -48,17 +48,17 @@ export default function ProductPage() {
    
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">
-      <div className="flex">
+      <div className="flex p-4">
         <Link href="/productlists">
-          <ArrowUturnLeftIcon className="size-12 stroke-white ml-6" />
+          <ChevronLeftIcon className="size-8 stroke-white ml-6" />
         </Link>
         <Link href="/productlists">
-          <p className="text-white hover:underline underline-offset-2">Return to product list</p>
+          <p className="text-white hover:underline underline-offset-2 p-1">Return to product list</p>
         </Link>
       </div>
-      <div className="pt-6 grid grid-cols-2">
+      <div className="pt-6 md:grid grid-cols-2 md:p-4">
         {/* Image */}
-        <div className="mx-auto mt-6 sm:px-6 lg:w-2/3 g:gap-x-8 lg:px-8">
+        <div className="mx-auto mt-6 sm:px-6 md:w-11/12 lg:w-2/3 g:gap-x-8 lg:px-8">
           <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
               alt={product.imageAlt}
@@ -70,15 +70,23 @@ export default function ProductPage() {
         </div>
 
         {/* Product info */}
-        <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:max-w-7xl lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+        <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24 lg:pt-16 text-center">
           <div className="lg:border-r lg:border-[#392F5A] lg:pr-8">
-            <h1 className="text-3xl font-bold tracking-tight text-white">{product.name}</h1>
+            <h1 className="md:text-2xl lg:text-3xl font-bold tracking-tight text-white">{product.name}</h1>
           </div>
-
+          <div className="py-10 lg:border-r lg:border-[#392F5A] lg:pb-16 lg:pr-8 lg:pt-6">
+            {/* Description and details */}
+            <div>
+              <h3 className="sr-only">Description</h3>
+              <div className="space-y-6">
+                <p className="text-white md:text-md text-lg">{product.description}</p>
+              </div>
+            </div>
+          </div>
           {/* Options */}
-          <div className="mt-4 lg:mt-0">
+          <div className="mt-4 lg:mt-10">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl font-bold tracking-tight text-white">{product.price}</p>
+            <p className="md:text-xl text-2xl font-bold tracking-tight text-white">{product.price}</p>
 
             <form className="mt-10" onSubmit={(e) => { e.preventDefault(); handleAddToCart(); }}>
               <button
@@ -88,16 +96,6 @@ export default function ProductPage() {
                 Add to bag
               </button>
             </form>
-          </div>
-
-          <div className="py-10 lg:border-r lg:border-[#392F5A] lg:pb-16 lg:pr-8 lg:pt-6">
-            {/* Description and details */}
-            <div>
-              <h3 className="sr-only">Description</h3>
-              <div className="space-y-6">
-                <p className="text-base text-white">{product.description}</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
