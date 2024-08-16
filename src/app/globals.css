@@ -51,6 +51,8 @@ footer {
   background-color: #392F5A;
   color: white;
   padding: 2rem;
+  bottom: 0;
+  position: relative;
 }
 .footer-container {
   display: flex;
