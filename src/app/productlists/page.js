@@ -46,7 +46,7 @@ export default function ProductList() {
         }}
       />
         <div className="relative z-10 mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
-          <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md sm:block sm:mt-28 md:mt-16 lg:mt-20">
+          <div className="bg-[#F1FAEE] text-[#1D3557] py-2 p-4 h-10 rounded-md sm:block sm:mt-28 md:mt-16">
             <Menu as="div">
             {({ open }) => {
               useEffect(() => {
@@ -65,7 +65,7 @@ export default function ProductList() {
                   <MenuItems
                     transition
                     anchor="bottom left"
-                    className="origin-top-right border border-white/5 bg-[#FFF8F0] mt-2 p-4 rounded-md w-40"
+                    className="origin-top-right border border-white/5 bg-[#F1FAEE] mt-2 p-4 rounded-md w-40"
                   >
                     <MenuItem>
                       <button className="group flex w-full p-1 hover:bg-neutral-300">
@@ -113,7 +113,7 @@ export default function ProductList() {
               >
                 {/* Pseudo-element for texture overlay */}
                 <div 
-                  className="absolute inset-0 bg-[url('https://texturelabs.org/wp-content/uploads/Texturelabs_Fabric_155S.jpg')] opacity-20 bg-cover bg-center z-0"
+                  className="absolute inset-0 bg-[url('https://texturelabs.org/wp-content/uploads/Texturelabs_Fabric_155S.jpg')] opacity-25 bg-cover bg-center z-0"
                   style={{ pointerEvents: 'none', zIndex: -1 }}
                 />
 
