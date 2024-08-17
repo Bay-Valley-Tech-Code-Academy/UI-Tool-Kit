@@ -1,5 +1,5 @@
 import pool from "../../data/postgres";
-import AddToCartButton from './AddToCartButton'; // Adjust the import path as needed
+import AddToCartButton from "./AddToCartButton"; // Adjust the import path as needed
 
 export default async function ProductPage({ params }) {
   const { id } = params;
@@ -10,7 +10,9 @@ export default async function ProductPage({ params }) {
     const client = await pool.connect();
     console.log("Connected to the database!");
 
-    const result = await client.query("SELECT * FROM products WHERE id = $1", [id]);
+    const result = await client.query("SELECT * FROM products WHERE id = $1", [
+      id,
+    ]);
     product = result.rows[0]; // Fetch the first (and should be the only) result
 
     client.release(); // Release the client back to the pool
@@ -22,32 +24,6 @@ export default async function ProductPage({ params }) {
   if (!product) {
     return <div>Product not found</div>;
   }
-
-  const handleAddToCart = () => {
-    // Retrieve the existing cart from localStorage
-    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-    let newCart = [];
-    
-    if(existingCart.some(item => item.id === product.id)){
-      newCart = existingCart.map(item => {
-        if(item.id === product.id){
-          return {...item, quantity: Number(item.quantity) + Number(quantity)};
-        }
-        return item;
-      });
-    }
-    else{
-      const updatedProduct = { ...product, quantity: quantity };
-      newCart = [...existingCart, updatedProduct];
-    }
-
-    // Save the updated cart back to localStorage
-    setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-
-    // Redirect to the shopping cart page
-    router.push("/cart");
-  };
 
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">

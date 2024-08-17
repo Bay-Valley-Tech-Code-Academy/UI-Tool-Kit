@@ -15,54 +15,63 @@ export default function Cart() {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       const cartItems = JSON.parse(savedCart);
-  
+
       // Convert price to numbers and filter out any invalid entries
-      const validCartItems = cartItems.filter((item) => !isNaN(parseFloat(item.price)));
-  
+      const validCartItems = cartItems.filter(
+        (item) => !isNaN(parseFloat(item.price))
+      );
+
       setCart(cartItems);
       setSubtotal(
-        validCartItems.reduce(
-          (currentValue, item) => new Decimal(parseFloat(item.price)).plus(currentValue),
-          new Decimal(0)
-        ).toFixed(2)
+        validCartItems
+          .reduce(
+            (currentValue, item) =>
+              new Decimal(parseFloat(item.price))
+                .times(item.quantity)
+                .plus(currentValue),
+            new Decimal(0)
+          )
+          .toFixed(2)
       );
     }
   }, []);
-  
 
   const handleRemoveFromCart = (idToRemove) => {
     const updatedCart = cart.filter((item) => item.id !== idToRemove);
     setCart(updatedCart);
-    
+
     // Recalculate the subtotal based on the updated cart
     const newSubtotal = updatedCart
       .filter((item) => !isNaN(parseFloat(item.price)))
       .reduce(
-        (currentValue, item) => new Decimal(parseFloat(item.price)).plus(currentValue),
+        (currentValue, item) =>
+          new Decimal(parseFloat(item.price))
+            .times(item.quantity)
+            .plus(currentValue),
         new Decimal(0)
       )
       .toFixed(2);
-    
+
     setSubtotal(newSubtotal);
 
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
-  
 
   const decreaseQuantity = (idToReduce) => {
-    const updatedCart = cart.map((item) => {
-      if (item.id === idToReduce) {
-        const newQuantity = item.quantity - 1;
-        return newQuantity > 0 ? { ...item, quantity: newQuantity } : null;
-      }
-      return item;
-    })
-    .filter((item) => item !== null);
+    const updatedCart = cart
+      .map((item) => {
+        if (item.id === idToReduce) {
+          const newQuantity = item.quantity - 1;
+          return newQuantity > 0 ? { ...item, quantity: newQuantity } : null;
+        }
+        return item;
+      })
+      .filter((item) => item !== null);
 
     setCart(updatedCart);
     setSubtotal(
       updatedCart
-        .filter((item) => typeof item.price === "number")
+        .filter((item) => !isNaN(parseFloat(item.price)))
         .reduce(
           (currentValue, item) =>
             new Decimal(item.price).times(item.quantity).plus(currentValue),
@@ -85,7 +94,7 @@ export default function Cart() {
     setCart(updatedCart);
     setSubtotal(
       updatedCart
-        .filter((item) => typeof item.price === "number")
+        .filter((item) => !isNaN(parseFloat(item.price)))
         .reduce(
           (currentValue, item) =>
             new Decimal(item.price).times(item.quantity).plus(currentValue),

@@ -1,26 +1,63 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function AddToCartButton({ product }) {
+  const [quantity, setQuantity] = useState(1);
   const router = useRouter();
 
   const handleAddToCart = () => {
     // Retrieve the existing cart from localStorage
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    let newCart = [];
 
-    // Add the new product to the cart
-    const newCart = [...existingCart, product];
+    if (existingCart.some((item) => item.id === product.id)) {
+      newCart = existingCart.map((item) => {
+        if (item.id === product.id) {
+          return {
+            ...item,
+            quantity: Number(item.quantity) + Number(quantity),
+          };
+        }
+        return item;
+      });
+    } else {
+      const updatedProduct = { ...product, quantity: Number(quantity) };
+      newCart = [...existingCart, updatedProduct];
+    }
 
     // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    localStorage.setItem("cart", JSON.stringify(newCart));
 
     // Redirect to the shopping cart page
-    router.push('/cart');
+    router.push("/cart");
   };
 
   return (
-    <form className="mt-10" onSubmit={(e) => { e.preventDefault(); handleAddToCart(); }}>
+    <form
+      className="mt-10"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleAddToCart();
+      }}
+    >
+      <div className="flex justify-evenly">
+        <label htmlFor="quantity" className="text-white">
+          How many:
+        </label>
+        <select
+          name="quantity"
+          id="quantity"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
       <button
         type="submit"
         className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFF8F0] px-8 py-3 text-base font-medium text-[#392F5A] hover:bg-[#F2E6D7] focus:outline-none focus:ring-2 focus:ring-[#392F5A] focus:ring-offset-2"
