@@ -36,10 +36,18 @@ export default function ProductList() {
   }, []);
 
   return  (
-    <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] lg:h-screen">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
-        <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md sm:block sm:mt-28 md:mt-16 lg:mt-20">
-          <Menu as="div">
+    <div className="relative bg-[#1D3557] lg:h-screen">
+      {/* Background texture overlay */}
+      <div className="absolute inset-0"style={{backgroundImage: `url('https://texturelabs.org/wp-content/uploads/Texturelabs_Metal_124S.jpg')`,
+          opacity:0.3,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          zIndex:0, // Ensure it's behind everything
+        }}
+      />
+        <div className="relative z-10 mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
+          <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md sm:block sm:mt-28 md:mt-16 lg:mt-20">
+            <Menu as="div">
             {({ open }) => {
               useEffect(() => {
                 if (open) {
@@ -89,21 +97,27 @@ export default function ProductList() {
           </Menu>
         </div>
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-white">Product List</h2>
-          <p className="tracking-tight text-white">Check out Bay Valley Tech's high quality merchandise!</p>
+          <h2 className="text-2xl font-bold tracking-tight text-[#F1FAEE]">Product List</h2>
+          <p className="tracking-tight text-[#F1FAEE]">Check out Bay Valley Tech's high quality merchandise!</p>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <div
                 key={product.id}
-                className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px]" // Set a maximum height
+                className="group relative bg-[#457B9D] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105"// Added rounded-md
                 style={{
                   boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
                   textDecoration: 'none',
                 }}
                 onClick={() => handleProductClick(product.id)} // Handle click for product details
               >
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-48"> {/* Reduced height */}
+                {/* Pseudo-element for texture overlay */}
+                <div 
+                  className="absolute inset-0 bg-[url('https://texturelabs.org/wp-content/uploads/Texturelabs_Fabric_155S.jpg')] opacity-20 bg-cover bg-center z-0"
+                  style={{ pointerEvents: 'none', zIndex: -1 }}
+                />
+
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-48"> {/* Reduced height */}
                   <img
                     alt={product.imageAlt}
                     src={product.imageSrc}
@@ -111,16 +125,16 @@ export default function ProductList() {
                   />
                 </div>
                 <div className="flex-grow p-2"> {/* Reduced padding */}
-                  <h3 className="text-lg font-bold text-[#392F5A] text-left">
+                  <h3 className="text-lg font-bold text-[#F1FAEE] text-left">
                     {product.name}
                   </h3>
-                  <p className="mt-1 text-sm text-[#392F5A] text-left">
+                  <p className="mt-1 text-sm text-[#F1FAEE] text-left">
                     {product.description}
                   </p>
                 </div>
                 <div className="flex justify-between p-2 items-center"> {/* Footer section */}
                   <button 
-                    className="bg-[#392F5A] text-white px-4 py-2 rounded-md hover:bg-[#2F274D] active:bg-[#261E40] transition duration-150 ease-in-out"
+                    className="bg-[#A8DADC] text-[#1D3557] px-4 py-2 rounded-md hover:bg-[#2F274D] active:bg-[#261E40] hover:text-[#F1FAEE] transition duration-150 ease-in-out"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent triggering the product detail click
                       handleAddToCart({
@@ -132,7 +146,7 @@ export default function ProductList() {
                   >
                     Add to cart
                   </button>
-                  <p className="text-sm font-medium text-[#392F5A] ml-4">
+                  <p className="text-sm font-medium text-[#F1FAEE] ml-4">
                     {product.price}
                   </p>
                 </div>
