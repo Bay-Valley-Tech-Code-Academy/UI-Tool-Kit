@@ -42,6 +42,7 @@ export default function ProductPage() {
         if(item.id === product.id){
           return {...item, quantity: Number(item.quantity) + Number(quantity)};
         }
+        return item;
       });
     }
     else{

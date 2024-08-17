@@ -19,7 +19,8 @@ export default function Cart() {
         JSON.parse(savedCart)
           .filter((item) => typeof item.price === "number")
           .reduce(
-            (currentValue, item) => new Decimal(item.price).plus(currentValue),
+            (currentValue, item) =>
+              new Decimal(item.price).times(item.quantity).plus(currentValue),
             new Decimal(0)
           )
           .toFixed(2)
@@ -27,18 +28,67 @@ export default function Cart() {
     }
   }, []);
 
-  const handleRemoveFromCart = (indexToRemove) => {
-    const updatedCart = cart.filter((_, index) => index !== indexToRemove);
+  const handleRemoveFromCart = (idToRemove) => {
+    const updatedCart = cart.filter((item) => item.id !== idToRemove);
     setCart(updatedCart);
     setSubtotal(
       updatedCart
         .filter((item) => typeof item.price === "number")
         .reduce(
-          (currentValue, item) => new Decimal(item.price).plus(currentValue),
+          (currentValue, item) =>
+            new Decimal(item.price).times(item.quantity).plus(currentValue),
           new Decimal(0)
         )
         .toFixed(2)
     );
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const decreaseQuantity = (idToReduce) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === idToReduce) {
+        const newQuantity = item.quantity - 1;
+        return newQuantity > 0 ? { ...item, quantity: newQuantity } : null;
+      }
+      return item;
+    })
+    .filter((item) => item !== null);
+
+    setCart(updatedCart);
+    setSubtotal(
+      updatedCart
+        .filter((item) => typeof item.price === "number")
+        .reduce(
+          (currentValue, item) =>
+            new Decimal(item.price).times(item.quantity).plus(currentValue),
+          new Decimal(0)
+        )
+        .toFixed(2)
+    );
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const increaseQuantity = (idToIncrease) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === idToIncrease) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+
+    setCart(updatedCart);
+    setSubtotal(
+      updatedCart
+        .filter((item) => typeof item.price === "number")
+        .reduce(
+          (currentValue, item) =>
+            new Decimal(item.price).times(item.quantity).plus(currentValue),
+          new Decimal(0)
+        )
+        .toFixed(2)
+    );
+
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
@@ -52,9 +102,9 @@ export default function Cart() {
           {cart.length > 0 ? (
             <>
               <ul className="lg:w-1/2">
-                {cart.map((item, index) => (
+                {cart.map((item) => (
                   <li
-                    key={index}
+                    key={item.id}
                     className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block mb-6 p-6 flex"
                   >
                     <div className="border-[#3D3860] border-8 rounded border-solid mr-4">
@@ -77,10 +127,24 @@ export default function Cart() {
                         </h2>
                         <p className="text-base text-[#392F5A]">{item.price}</p>
                       </div>
-                      <p className="text-base text-[#392F5A]">In stock</p>
+                      <div className="flex items-end flex-wrap items-center">
+                        <p className="pr-2">quantity: {item.quantity}</p>
+                        <button
+                          onClick={() => decreaseQuantity(item.id)}
+                          className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        >
+                          -
+                        </button>
+                        <button
+                          onClick={() => increaseQuantity(item.id)}
+                          className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                     <button
-                      onClick={() => handleRemoveFromCart(index)}
+                      onClick={() => handleRemoveFromCart(item.id)}
                       className="ml-auto text-[#392F5A] hover:text-red-800 absolute top-1 right-2"
                     >
                       X
