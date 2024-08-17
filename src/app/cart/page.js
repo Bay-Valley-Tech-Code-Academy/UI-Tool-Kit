@@ -14,35 +14,40 @@ export default function Cart() {
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
-      setCart(JSON.parse(savedCart));
+      const cartItems = JSON.parse(savedCart);
+  
+      // Convert price to numbers and filter out any invalid entries
+      const validCartItems = cartItems.filter((item) => !isNaN(parseFloat(item.price)));
+  
+      setCart(cartItems);
       setSubtotal(
-        JSON.parse(savedCart)
-          .filter((item) => typeof item.price === "number")
-          .reduce(
-            (currentValue, item) =>
-              new Decimal(item.price).times(item.quantity).plus(currentValue),
-            new Decimal(0)
-          )
-          .toFixed(2)
+        validCartItems.reduce(
+          (currentValue, item) => new Decimal(parseFloat(item.price)).plus(currentValue),
+          new Decimal(0)
+        ).toFixed(2)
       );
     }
   }, []);
+  
 
   const handleRemoveFromCart = (idToRemove) => {
     const updatedCart = cart.filter((item) => item.id !== idToRemove);
     setCart(updatedCart);
-    setSubtotal(
-      updatedCart
-        .filter((item) => typeof item.price === "number")
-        .reduce(
-          (currentValue, item) =>
-            new Decimal(item.price).times(item.quantity).plus(currentValue),
-          new Decimal(0)
-        )
-        .toFixed(2)
-    );
+    
+    // Recalculate the subtotal based on the updated cart
+    const newSubtotal = updatedCart
+      .filter((item) => !isNaN(parseFloat(item.price)))
+      .reduce(
+        (currentValue, item) => new Decimal(parseFloat(item.price)).plus(currentValue),
+        new Decimal(0)
+      )
+      .toFixed(2);
+    
+    setSubtotal(newSubtotal);
+
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+  
 
   const decreaseQuantity = (idToReduce) => {
     const updatedCart = cart.map((item) => {
@@ -108,10 +113,10 @@ export default function Cart() {
                     className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block mb-6 p-6 flex"
                   >
                     <div className="border-[#3D3860] border-8 rounded border-solid mr-4">
-                      {item.images && item.images.length > 0 ? (
+                      {item.imagesrc && item.imagesrc.length > 0 ? (
                         <img
-                          src={item.images[0].src}
-                          alt={item.images[0].alt}
+                          src={item.imagesrc}
+                          alt={item.imagealt}
                           className="h-32 w-32 object-cover object-center ml-1"
                         />
                       ) : (

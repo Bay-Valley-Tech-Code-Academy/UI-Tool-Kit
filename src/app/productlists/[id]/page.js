@@ -1,32 +1,23 @@
-"use client";
+import pool from "../../data/postgres";
+import AddToCartButton from './AddToCartButton'; // Adjust the import path as needed
 
-import { useState } from "react";
-import { useRouter, useParams } from "next/navigation";
-import { ChevronLeftIcon } from "@heroicons/react/24/outline";
-import products from "../../data/products"; // Adjust the import path as needed
-import Link from "next/link";
+export default async function ProductPage({ params }) {
+  const { id } = params;
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+  let product;
 
-export default function ProductPage() {
-  const { id } = useParams(); // Get the id from the URL
-  const product = products.find((p) => p.id === parseInt(id)); // Find the product by id
-  const [quantity, setQuantity] = useState(1);
+  try {
+    const client = await pool.connect();
+    console.log("Connected to the database!");
 
-  // Ensure product has images property if not included in products.js
-  if (!product.images) {
-    product.images = [
-      {
-        src: product.imageSrc,
-        alt: product.imageAlt,
-      },
-    ];
+    const result = await client.query("SELECT * FROM products WHERE id = $1", [id]);
+    product = result.rows[0]; // Fetch the first (and should be the only) result
+
+    client.release(); // Release the client back to the pool
+  } catch (error) {
+    console.log("Error fetching data: ", error);
+    product = null;
   }
-
-  const [cart, setCart] = useState([]);
-  const router = useRouter();
 
   if (!product) {
     return <div>Product not found</div>;
@@ -60,23 +51,14 @@ export default function ProductPage() {
 
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">
-      <div className="flex p-4">
-        <Link href="/productlists">
-          <ChevronLeftIcon className="size-8 stroke-white ml-6" />
-        </Link>
-        <Link href="/productlists">
-          <p className="text-white hover:underline underline-offset-2 p-1">
-            Return to product list
-          </p>
-        </Link>
-      </div>
-      <div className="pt-6 md:grid grid-cols-2 md:p-4">
+      <p className="size-12 stroke-white ml-6" />
+      <div className="pt-6">
         {/* Image */}
         <div className="mx-auto mt-6 sm:px-6 md:w-11/12 lg:w-2/3 g:gap-x-8 lg:px-8">
           <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
-              alt={product.imageAlt}
-              src={product.imageSrc}
+              alt={product.imagealt}
+              src={product.imagesrc}
               className="h-full w-full object-cover object-center rounded-[11px] shadow-lg"
               style={{ boxShadow: "3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)" }}
             />
@@ -108,29 +90,7 @@ export default function ProductPage() {
               {product.price}
             </p>
 
-            <form
-              className="mt-10"
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleAddToCart();
-              }}
-            >
-              <div className="flex justify-evenly">
-                <label htmlFor="quantity" className="text-white">How many:</label>
-                <select name="quantity" id="quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-              </div>
-              <button
-                type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFF8F0] px-8 py-3 text-base font-medium text-[#392F5A] hover:bg-[#F2E6D7] focus:outline-none focus:ring-2 focus:ring-[#392F5A] focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
-            </form>
+            <AddToCartButton product={product} />
           </div>
         </div>
       </div>
