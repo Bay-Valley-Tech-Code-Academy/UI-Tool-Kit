@@ -26,6 +26,8 @@ export default function Home() {
           backgroundPosition: 'center',
           opacity: 0.3,
           pointerEvents: 'none',
+          position: 'fixed',
+          width: '100vw'
         }}
       />
 
