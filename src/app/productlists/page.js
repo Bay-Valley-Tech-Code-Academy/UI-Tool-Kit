@@ -28,8 +28,6 @@ export default function ProductList() {
     fetchProducts();
   }, []);
 
-    
-
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] lg:h-screen">
       <PromoSection />
