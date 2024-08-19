@@ -4,28 +4,34 @@ import { useEffect, useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { PlusSmallIcon } from "@heroicons/react/24/outline";
 import PromoSection from "../components/promosection";
+import productData from '../data/product';
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    // Fetch data from the API route
-    async function fetchProducts() {
-      try {
-        const res = await fetch("/api/products");
+  // useEffect(() => {
+  //   // Fetch data from the API route
+  //   async function fetchProducts() {
+  //     try {
+  //       const res = await fetch("/api/products");
 
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
+  //       if (!res.ok) {
+  //         throw new Error(`HTTP error! Status: ${res.status}`);
+  //       }
         
-        const data = await res.json();
-        setProducts(data);
-      } catch (error) {
-        console.log("Error fetching data: ", error);
-      }
-    }
+  //       const data = await res.json();
+  //       setProducts(data);
+  //     } catch (error) {
+  //       console.log("Error fetching data: ", error);
+  //     }
+  //   }
 
-    fetchProducts();
+  //   fetchProducts();
+  // }, []);
+
+  useEffect(() => {
+    // Directly use the imported data
+    setProducts(productData);
   }, []);
 
   return (
