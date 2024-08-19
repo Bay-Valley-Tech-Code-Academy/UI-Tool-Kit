@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="absolute w-screen">
       <div className="footer-container">
         <div className="footer-columns">
           <div className="footer-column">
