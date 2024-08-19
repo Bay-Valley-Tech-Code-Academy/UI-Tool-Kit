@@ -35,19 +35,27 @@ export default function ProductList() {
     };
   }, []);
 
-  return  (
+  return (
     <div className="relative bg-[#1D3557] lg:h-screen">
-      {/* Background texture overlay */}
-      <div className="absolute inset-0"style={{backgroundImage: `url('https://texturelabs.org/wp-content/uploads/Texturelabs_Metal_124S.jpg')`,
-          opacity:0.3,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          zIndex:0, // Ensure it's behind everything
-        }}
-      />
-        <div className="relative z-10 mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex gap-20">
-          <div className="bg-[#F1FAEE] text-[#1D3557] py-2 p-4 h-10 rounded-md sm:block sm:mt-28 md:mt-16">
-            <Menu as="div">
+      
+      {/* Image and Text Overlay Section */}
+      <div className="relative z-10">
+        <div className="relative bg-cover bg-center h-44 overflow-hidden">
+          <div className="absolute inset-0 bg-cover bg-center h-full" style={{
+            backgroundImage: `url('https://www.modbee.com/latest-news/cwnnig/picture253156058/alternates/LANDSCAPE_1140/bayvalleytech2_KK.JPG')`,
+            opacity: 0.3, // Lowered opacity for the background image
+            zIndex: -1, // Make sure the image stays behind the text
+          }}></div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
+            <h2 className="text-4xl font-bold text-[#F1FAEE]">Product List</h2>
+            <p className="text-lg text-[#F1FAEE] mt-2">Check out Bay Valley Tech's high quality merchandise!</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="relative z-10 mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8 flex gap-20">
+        <div className="bg-[#F1FAEE] text-[#1D3557] py-2 p-4 h-10 rounded-md sm:block sm:mt-8 md:mt-3">
+          <Menu as="div">
             {({ open }) => {
               useEffect(() => {
                 if (open) {
@@ -96,35 +104,28 @@ export default function ProductList() {
             }}
           </Menu>
         </div>
+        
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-[#F1FAEE]">Product List</h2>
-          <p className="tracking-tight text-[#F1FAEE]">Check out Bay Valley Tech's high quality merchandise!</p>
-
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <div
                 key={product.id}
-                className="group relative bg-[#457B9D] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105"// Added rounded-md
+                className="group relative bg-[#457B9D] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105"
                 style={{
                   boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
                   textDecoration: 'none',
                 }}
-                onClick={() => handleProductClick(product.id)} // Handle click for product details
+                onClick={() => handleProductClick(product.id)}
               >
-                {/* Pseudo-element for texture overlay */}
-                <div 
-                  className="absolute inset-0 bg-[url('https://texturelabs.org/wp-content/uploads/Texturelabs_Fabric_155S.jpg')] opacity-25 bg-cover bg-center z-0"
-                  style={{ pointerEvents: 'none', zIndex: -1 }}
-                />
-
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-48"> {/* Reduced height */}
+                
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-48">
                   <img
                     alt={product.imageAlt}
                     src={product.imageSrc}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
-                <div className="flex-grow p-2"> {/* Reduced padding */}
+                <div className="flex-grow p-2">
                   <h3 className="text-lg font-bold text-[#F1FAEE] text-left">
                     {product.name}
                   </h3>
@@ -132,15 +133,15 @@ export default function ProductList() {
                     {product.description}
                   </p>
                 </div>
-                <div className="flex justify-between p-2 items-center"> {/* Footer section */}
+                <div className="flex justify-between p-2 items-center">
                   <button 
                     className="bg-[#A8DADC] text-[#1D3557] px-4 py-2 rounded-md hover:bg-[#2F274D] active:bg-[#261E40] hover:text-[#F1FAEE] transition duration-150 ease-in-out"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent triggering the product detail click
                       handleAddToCart({
                         ...product,
-                        imageSrc: product.imageSrc,  // Ensure imageSrc is included
-                        imageAlt: product.imageAlt,  // Ensure imageAlt is included
+                        imageSrc: product.imageSrc,
+                        imageAlt: product.imageAlt,
                       });
                     }}
                   >
