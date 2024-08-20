@@ -15,11 +15,11 @@ export default function ProductPage() {
   const product = products.find((p) => p.id === parseInt(id)); // Find the product by id
 
   // Ensure product has images property if not included in products.js
-  if (!product.images) {
-    product.images = [
+  if (!product.imagesrc) {
+    product.imagesrc = [
       {
-        src: product.imageSrc,
-        alt: product.imageAlt,
+        src: product.imagesrc,
+        alt: product.imagealt,
       },
     ];
   }
@@ -61,8 +61,8 @@ export default function ProductPage() {
         <div className="mx-auto mt-6 sm:px-6 md:w-11/12 lg:w-2/3 g:gap-x-8 lg:px-8">
           <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
-              alt={product.imageAlt}
-              src={product.imageSrc}
+              alt={product.imagealt}
+              src={product.imagesrc}
               className="h-full w-full object-cover object-center rounded-[11px] shadow-lg"
               style={{ boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)' }}
             />
