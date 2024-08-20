@@ -97,7 +97,7 @@ export default function ProductList() {
                   boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
                   textDecoration: 'none',
                 }}
-                onClick={() => handleProductClick(product.id)}
+                onClick={() => handleAddToCart(product.id)}
               >
                 
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-48">
