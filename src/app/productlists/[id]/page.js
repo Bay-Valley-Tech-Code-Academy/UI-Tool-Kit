@@ -1,32 +1,62 @@
-import pool from "../../data/postgres";
-import AddToCartButton from './AddToCartButton'; // Adjust the import path as needed
+'use client';
 
-export default async function ProductPage({ params }) {
-  const { id } = params;
+import { useState } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
+import products from '../../data/products'; // Adjust the import path as needed
+import Link from "next/link";
 
-  let product;
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
 
-  try {
-    const client = await pool.connect();
-    console.log("Connected to the database!");
+export default function ProductPage() {
+  const { id } = useParams(); // Get the id from the URL
+  const product = products.find((p) => p.id === parseInt(id)); // Find the product by id
 
-    const result = await client.query("SELECT * FROM products WHERE id = $1", [id]);
-    product = result.rows[0]; // Fetch the first (and should be the only) result
-
-    client.release(); // Release the client back to the pool
-  } catch (error) {
-    console.log("Error fetching data: ", error);
-    product = null;
+  // Ensure product has images property if not included in products.js
+  if (!product.imagesrc) {
+    product.imagesrc = [
+      {
+        src: product.imagesrc,
+        alt: product.imagealt,
+      },
+    ];
   }
+  
+  const [cart, setCart] = useState([]);
+  const router = useRouter();
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
+  const handleAddToCart = () => {
+    // Retrieve the existing cart from localStorage
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Add the new product to the cart
+    const newCart = [...existingCart, product];
+    
+    // Save the updated cart back to localStorage
+    setCart(newCart);
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    
+    // Redirect to the shopping cart page
+    router.push('/cart');
+  };
+   
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">
-      <p className="size-12 stroke-white ml-6" />
-      <div className="pt-6">
+      <div className="flex p-4">
+        <Link href="/productlists">
+          <ChevronLeftIcon className="size-8 stroke-white ml-6" />
+        </Link>
+        <Link href="/productlists">
+          <p className="text-white hover:underline underline-offset-2 p-1">Return to product list</p>
+        </Link>
+      </div>
+      <div className="pt-6 md:grid grid-cols-2 md:p-4">
         {/* Image */}
         <div className="mx-auto mt-6 sm:px-6 md:w-11/12 lg:w-2/3 g:gap-x-8 lg:px-8">
           <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
@@ -58,7 +88,14 @@ export default async function ProductPage({ params }) {
             <h2 className="sr-only">Product information</h2>
             <p className="md:text-xl text-2xl font-bold tracking-tight text-white">{product.price}</p>
 
-            <AddToCartButton product={product} />
+            <form className="mt-10" onSubmit={(e) => { e.preventDefault(); handleAddToCart(); }}>
+              <button
+                type="submit"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFF8F0] px-8 py-3 text-base font-medium text-[#392F5A] hover:bg-[#F2E6D7] focus:outline-none focus:ring-2 focus:ring-[#392F5A] focus:ring-offset-2"
+              >
+                Add to bag
+              </button>
+            </form>
           </div>
         </div>
       </div>
