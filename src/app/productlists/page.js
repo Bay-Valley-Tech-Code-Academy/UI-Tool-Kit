@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
@@ -24,6 +24,10 @@ export default function ProductList() {
     router.push('/cart');
   };
 
+  const handleCardClick = (id) => {
+    // Navigate to the dynamic product page
+    router.push(`/productlists/${id}`);
+  };
 
   useEffect(() => {
     return () => {
@@ -87,7 +91,7 @@ export default function ProductList() {
           </Menu>
         </div>
 
-  <div>
+        <div>
           <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <div
@@ -97,9 +101,8 @@ export default function ProductList() {
                   boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)',
                   textDecoration: 'none',
                 }}
-                onClick={() => handleAddToCart(product.id)}
+                onClick={() => handleCardClick(product.id)}
               >
-                
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-48">
                   <img
                     alt={product.imagealt}
@@ -120,16 +123,12 @@ export default function ProductList() {
                     className="bg-[#392F5A] text-white px-4 py-2 rounded-md hover:bg-white active:bg-[#F1FAEE] hover:text-[#392F5A] transition duration-150 ease-in-out"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent triggering the product detail click
-                      handleAddToCart({
-                        ...product,
-                        imagesrc: product.imagesrc,
-                        imagealt: product.imagealt,
-                      });
+                      handleAddToCart(product);
                     }}
                   >
                     Add to cart
                   </button>
-                  <p className="text-sm font-medium text-[#F1FAEE] ml-4">
+                  <p className="text-sm font-medium text-black ml-4">
                     {product.price}
                   </p>
                 </div>
