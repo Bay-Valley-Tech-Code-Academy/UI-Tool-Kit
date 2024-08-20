@@ -21,10 +21,6 @@ export default function Cart() {
         (item) => !isNaN(parseFloat(item.price))
       );
 
-      const validCartItems = cartItems.filter(
-        (item) => !isNaN(parseFloat(item.price))
-      );
-
       setCart(cartItems);
       setSubtotal(
         validCartItems

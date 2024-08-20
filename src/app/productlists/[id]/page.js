@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import products from '../../data/products'; // Adjust the import path as needed
 import Link from "next/link";
+import AddToCartButton from './AddToCartButton';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -30,21 +31,6 @@ export default function ProductPage() {
   if (!product) {
     return <div>Product not found</div>;
   }
-
-  const handleAddToCart = () => {
-    // Retrieve the existing cart from localStorage
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Add the new product to the cart
-    const newCart = [...existingCart, product];
-    
-    // Save the updated cart back to localStorage
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    
-    // Redirect to the shopping cart page
-    router.push('/cart');
-  };
    
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">
@@ -94,14 +80,7 @@ export default function ProductPage() {
               {product.price}
             </p>
 
-            <form className="mt-10" onSubmit={(e) => { e.preventDefault(); handleAddToCart(); }}>
-              <button
-                type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFF8F0] px-8 py-3 text-base font-medium text-[#392F5A] hover:bg-[#F2E6D7] focus:outline-none focus:ring-2 focus:ring-[#392F5A] focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
-            </form>
+            <AddToCartButton product={product}/>
           </div>
         </div>
       </div>

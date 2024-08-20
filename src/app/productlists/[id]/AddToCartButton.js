@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function AddToCartButton({ product }) {
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
-
+  console.log(product)
   const handleAddToCart = () => {
     // Retrieve the existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
