@@ -17,7 +17,7 @@ export default function Example() {
   return (   
     <header className="bg-white">
       <nav aria-label="Global" className=" flex w-full items-center justify-between p-6 lg:px-8">
-      <img alt="Bay Valley Tech Light Bulb." src="/images/bvt_logo.png" className="w-8 rounded-full"></img>
+      <a href="/"><img alt="Bay Valley Tech Light Bulb." src="/images/bvt_logo.png" className="w-8 rounded-full"></img></a>
         <div className="flex lg:hidden">
 
 
