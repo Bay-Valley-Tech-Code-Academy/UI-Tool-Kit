@@ -1,3 +1,4 @@
+
 const products = [
     {
       id: 1,
@@ -10,7 +11,7 @@ const products = [
     {
       id: 2,
       name: 'Bay Valley Tech Light Bulb',
-      imagesrc: 'https://scontent.fsac1-2.fna.fbcdn.net/v/t39.30808-6/352217654_6317002281698799_670870340879095555_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=piDvIbaDQacQ7kNvgH9aZpm&_nc_ht=scontent.fsac1-2.fna&oh=00_AYABJXM4vmx9HJjsVkWB-lUNqwbkMad6icK1AjEHGvcd0A&oe=66BB333C',
+      imagesrc: '/images/bvt_logo.png',
       imagealt: "Bay Valley Tech Light Bulb.",
       price: 179.99,
       description: 'The actual Bay Valley Tech light bulb from the logo!'
