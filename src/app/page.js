@@ -17,7 +17,9 @@ export default function Home() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 0.3,
-          pointerEvents: "none",
+          pointerEvents: 'none',
+          position: 'fixed',
+          width: '100vw'
         }}
       />
 

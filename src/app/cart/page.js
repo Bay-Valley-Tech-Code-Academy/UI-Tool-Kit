@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Decimal from "decimal.js";
-import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import { useRouter } from "next/navigation"; 
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const [shippingEstimate, setShippingEstimate] = useState(9.99);
   const [taxEstimate, setTaxEstimate] = useState(32.99);
   const [subtotal, setSubtotal] = useState(0);
-  const router = useRouter(); // Initialize useRouter
+  const router = useRouter();
 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
@@ -17,6 +17,10 @@ export default function Cart() {
       const cartItems = JSON.parse(savedCart);
 
       // Convert price to numbers and filter out any invalid entries
+      const validCartItems = cartItems.filter(
+        (item) => !isNaN(parseFloat(item.price))
+      );
+
       const validCartItems = cartItems.filter(
         (item) => !isNaN(parseFloat(item.price))
       );
@@ -51,6 +55,7 @@ export default function Cart() {
         new Decimal(0)
       )
       .toFixed(2);
+
 
     setSubtotal(newSubtotal);
 
@@ -122,17 +127,11 @@ export default function Cart() {
                     className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block mb-6 p-6 flex"
                   >
                     <div className="border-[#3D3860] border-8 rounded border-solid mr-4">
-                      {item.imagesrc && item.imagesrc.length > 0 ? (
-                        <img
-                          src={item.imagesrc}
-                          alt={item.imagealt}
-                          className="h-32 w-32 object-cover object-center ml-1"
-                        />
-                      ) : (
-                        <div className="h-16 w-16 flex items-center justify-center bg-gray-200 text-white">
-                          No Image
-                        </div>
-                      )}
+                      <img
+                        src={item.imagesrc || "/default-image.png"} // Fallback to default image if src is not available
+                        alt={item.imagealt || "No image available"}
+                        className="w-24 h-24 object-cover rounded-md"
+                      />
                     </div>
                     <div className="flex flex-col justify-between">
                       <div>
