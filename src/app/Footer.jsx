@@ -8,13 +8,14 @@ const Footer = () => {
         <div className="footer-columns">
           <div className="footer-column">
             <div className="footer-logo">
-              <Image
+            <a href="/"><Image
                 
                 src="/images/bvt-logo.png "
                 alt="Logo"
                 width={70}
                 height={70}
               />
+            </a>
             </div>
           </div>
           <div className="footer-column">
