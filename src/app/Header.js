@@ -15,7 +15,7 @@ export default function Example() {
       >
         <img
           alt="Bay Valley Tech Light Bulb."
-          src="/images/bvt-logo.png"
+          src="/images/bvt_logo.png"
           className="h-10 w-10 object-cover object-center lg:h-20 lg:w-20"
         />
         <div className="flex lg:hidden">
