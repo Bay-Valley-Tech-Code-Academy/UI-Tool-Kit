@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
 import products from '../../data/products'; // Adjust the import path as needed
 import Link from "next/link";
+import AddToCartButton from './AddToCartButton';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -15,11 +16,11 @@ export default function ProductPage() {
   const product = products.find((p) => p.id === parseInt(id)); // Find the product by id
 
   // Ensure product has images property if not included in products.js
-  if (!product.images) {
-    product.images = [
+  if (!product.imagesrc) {
+    product.imagesrc = [
       {
-        src: product.imageSrc,
-        alt: product.imageAlt,
+        src: product.imagesrc,
+        alt: product.imagealt,
       },
     ];
   }
@@ -30,21 +31,6 @@ export default function ProductPage() {
   if (!product) {
     return <div>Product not found</div>;
   }
-
-  const handleAddToCart = () => {
-    // Retrieve the existing cart from localStorage
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Add the new product to the cart
-    const newCart = [...existingCart, product];
-    
-    // Save the updated cart back to localStorage
-    setCart(newCart);
-    localStorage.setItem('cart', JSON.stringify(newCart));
-    
-    // Redirect to the shopping cart page
-    router.push('/cart');
-  };
    
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[rgb(57,47,90)] to-[#3F3D64]">
@@ -61,10 +47,10 @@ export default function ProductPage() {
         <div className="mx-auto mt-6 sm:px-6 md:w-11/12 lg:w-2/3 g:gap-x-8 lg:px-8">
           <div className="aspect-h-5 aspect-w-4 bg-[#FFF8F0] lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
             <img
-              alt={product.imageAlt}
-              src={product.imageSrc}
+              alt={product.imagealt}
+              src={product.imagesrc}
               className="h-full w-full object-cover object-center rounded-[11px] shadow-lg"
-              style={{ boxShadow: '3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)' }}
+              style={{ boxShadow: "3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)" }}
             />
           </div>
         </div>
@@ -72,30 +58,29 @@ export default function ProductPage() {
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24 lg:pt-16 text-center">
           <div className="lg:border-r lg:border-[#392F5A] lg:pr-8">
-            <h1 className="md:text-2xl lg:text-3xl font-bold tracking-tight text-white">{product.name}</h1>
+            <h1 className="md:text-2xl lg:text-3xl font-bold tracking-tight text-white">
+              {product.name}
+            </h1>
           </div>
           <div className="py-10 lg:border-r lg:border-[#392F5A] lg:pb-16 lg:pr-8 lg:pt-6">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>
               <div className="space-y-6">
-                <p className="text-white md:text-md text-lg">{product.description}</p>
+                <p className="text-white md:text-md text-lg">
+                  {product.description}
+                </p>
               </div>
             </div>
           </div>
           {/* Options */}
           <div className="mt-4 lg:mt-10">
             <h2 className="sr-only">Product information</h2>
-            <p className="md:text-xl text-2xl font-bold tracking-tight text-white">{product.price}</p>
+            <p className="md:text-xl text-2xl font-bold tracking-tight text-white">
+              {product.price}
+            </p>
 
-            <form className="mt-10" onSubmit={(e) => { e.preventDefault(); handleAddToCart(); }}>
-              <button
-                type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#FFF8F0] px-8 py-3 text-base font-medium text-[#392F5A] hover:bg-[#F2E6D7] focus:outline-none focus:ring-2 focus:ring-[#392F5A] focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
-            </form>
+            <AddToCartButton product={product}/>
           </div>
         </div>
       </div>
