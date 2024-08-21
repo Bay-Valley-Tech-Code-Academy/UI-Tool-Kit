@@ -11,7 +11,7 @@ const products = [
     {
       id: 2,
       name: 'Bay Valley Tech Light Bulb',
-      imagesrc: '/images/bvt-logo.png',
+      imagesrc: '/images/bvt_logo.png',
       imagealt: "Bay Valley Tech Light Bulb.",
       price: 179.99,
       description: 'The actual Bay Valley Tech light bulb from the logo!'
