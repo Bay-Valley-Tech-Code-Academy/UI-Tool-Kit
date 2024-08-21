@@ -1,64 +1,41 @@
 import React from "react";
-import Navbar from "../app/components/navbar";
 
 export default function Home() {
   return (
-    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-[11px]bg-gray-200 lg:aspect-none group-hover:opacity-75">
-      {/* <div>
-      <img alt="" className=" opacity-70" src="/images/background-fancy.jpg">
-      </img>
-</div> */}
-
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url('https://texturelabs.org/wp-content/uploads/Texturelabs_Metal_124S.jpg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.3,
-          pointerEvents: 'none',
-          position: 'fixed',
-          width: '100vw'
-        }}
-      />
-
-      <div className="bg-[#392F5A]">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 gap-x-20 ">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-[#FFF8F0] sm:text-6xl ">
+    <div className="bg-[#3D3860] min-h-screen flex flex-col">
+      <div className="flex flex-col items-center justify-center flex-grow">
+        <div className="flex items-center justify-center gap-16 max-w-7xl mx-auto px-8 py-32">
+          <div className="text-center max-w-2xl">
+            <h1 className="text-4xl font-extrabold tracking-wide text-white sm:text-6xl">
               Welcome to UI Shop Tool Kit!
             </h1>
-            <p className="mt-6 text-lg leading-8 text-[#FFF8F0] ">
+            <p className="mt-6 text-lg leading-8 text-white">
               With this you can make your own Website! There are many templates
               that you can use! Click the blue button below to head to the
               product lists page.
             </p>
-            <div
-              className="mt-10 flex items-center justify-center gap-x-6 p-10"
-              style={{ gap: "10rem" }}
-            >
+            <div className="mt-10 flex items-center justify-center gap-6">
               <a
                 href="productlists#"
-                className=" rounded-full bg-indigo-500 px-2.5 pt-py-10 text-sm font-semibold text-white shadow-sm  hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 gap-y-50 visited:text-gray-100"
+                className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105"
               >
-                Get started
+                Get Started
               </a>
               <a
                 href="about#"
-                className=" rounded-full bg-indigo-500 px-2.5 pt-py-10 text-sm font-semibold text-white shadow-sm  hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 gap-y-50 visited:text-gray-100"
+                className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105"
               >
-                Learn more <span aria-hidden="true"></span>
+                Learn More
               </a>
             </div>
           </div>
-
-          <a
-            href="story"
-            className="flex justify-center rounded-lg   bg-indigo-500  pt-5  text-sm font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 "
-          >
-            Learn Our Story <span aria-hidden="true"></span>
-          </a>
+          <div className="w-full max-w-lg">
+            <img
+              src="/images/3d-shopping-icon-illustration.png"
+              alt="Shopping Cart Placeholder"
+              className="w-full h-auto"
+            />
+          </div>
         </div>
       </div>
     </div>
