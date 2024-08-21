@@ -13,69 +13,62 @@ export default function Example() {
         }}
       />
 
-      <div
-        aria-hidden="true"
-        className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
-      >
+        <div aria-hidden="true" className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl">
+          <div
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+            className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
+          />
+        </div>
         <div
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-          className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-        />
-      </div>
-      <div
-        aria-hidden="true"
-        className="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-      >
-        <div
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-          className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
-        />
-      </div>
-      {/* for entire project */}
-      <div className="  mx-auto max-w-7xl px-6 lg:px-8">
-        <div className=" sm:columns-1 mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Our Achievements!
-          </h2>
+          aria-hidden="true"
+          className="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
+        >
+          <div
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+            className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
+          />
+        </div>
+        {/* for entire project */}
+        <div className="  mx-auto max-w-7xl px-6 lg:px-8">
+
+          <div className=" sm:columns-1 mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Our Achievements!</h2>
 
           <p className="mt-6 sm:text-md leading-8 text-gray-300">
             Bay Valley Tech works with a variety of charities such as The Raymus
             Foundation and The Salvation Army
           </p>
 
-          <div className=" flex flex-col w-[100vw] items-center content-center">
-            <a
-              href="https://www.raymusfoundation.org/focuses/"
-              className="  rounded-full w-30 h-auto px-30 pt-py-20 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100"
-            >
-              <div className="">
-                <img
-                  alt=""
-                  className="   sm:min-h-40 min-w-40 -mr-30 "
-                  src="https://www.gicancersalliance.org/wp-content/uploads/2017/10/RaymondFoundation_Logo_320x320.png"
-                ></img>
-              </div>
-            </a>
+            <div className=" flex-row  "  >
+              <a
+                href="https://www.raymusfoundation.org/focuses/"
+                className="  rounded-full   size-12   shadow-sm    ">
+              
+                <div className ="">
+                        <img alt="" className="min-h-50 min-w-40 -mr-40 gap-y-10 "  src="https://www.gicancersalliance.org/wp-content/uploads/2017/10/RaymondFoundation_Logo_320x320.png">
+                        </img>
+                </div> 
+              </a>
 
-            <a
-              href="https://www.salvationarmyusa.org/usn/"
-              className="  rounded-full  text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100"
-            >
-              <div className="">
-                <img
-                  alt=""
-                  className="  "
-                  src="https://salvationarmyowensound.ca/wp-content/uploads/2022/03/salvation-army-logo-crest-270px.png"
-                ></img>
-              </div>
-            </a>
-          </div>
+                
+
+              <a
+                href="https://www.salvationarmyusa.org/usn/"
+                className="  rounded-full  ">
+              
+                <div className="" style={{width: '15rem'}}>
+                        <img  alt="" className=" ml-20  "  src="https://salvationarmyowensound.ca/wp-content/uploads/2022/03/salvation-army-logo-crest-270px.png">
+                        </img>
+                </div> 
+              </a>
+
+        </div>
 
           <div className="  h-50 w-50 ">
             <p className="text-white  sm:text-lg">
