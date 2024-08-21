@@ -45,7 +45,7 @@ export default function Example() {
             Foundation and The Salvation Army
           </p>
 
-            <div className=" flex-row  "  >
+            <div className=" flex direction:row  "  >
               <a
                 href="https://www.raymusfoundation.org/focuses/"
                 className="  rounded-full   size-12   shadow-sm    ">
@@ -62,7 +62,8 @@ export default function Example() {
                 href="https://www.salvationarmyusa.org/usn/"
                 className="  rounded-full  ">
               
-                <div className="" style={{width: '15rem'}}>
+                <div className="ml-20 size-15" 
+                style={{ width: '10rem',}}>
                         <img  alt="" className=" ml-20  "  src="https://salvationarmyowensound.ca/wp-content/uploads/2022/03/salvation-army-logo-crest-270px.png">
                         </img>
                 </div> 
