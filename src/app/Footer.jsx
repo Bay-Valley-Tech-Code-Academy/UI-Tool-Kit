@@ -10,10 +10,10 @@ const Footer = () => {
             <div className="footer-logo">
             <a href="/"><Image
                 
-                src="/images/bvt-logo.png "
+                src="/images/bvt_logo.png "
                 alt="Logo"
-                width={70}
-                height={70}
+                width={50}
+                height={50}
               />
             </a>
             </div>
