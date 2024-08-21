@@ -31,6 +31,22 @@ const products = [
       imagealt: "Bay Valley Tech Directors Autograph.",
       price: 99.99,
       description: 'A unique autograph from the BVT director himself!'
+    },
+    {
+      id: 5,
+      name: 'Placeholder 1',
+      imagesrc: 'https://d3oj2y7irryo5z.cloudfront.net/wp-content/uploads/2021/03/AA-Bay-Valley-Tech-2-1024x645.jpg',
+      imagealt: "Bay Valley Tech Directors Autograph.",
+      price: 99.99,
+      description: 'A unique autograph from the BVT director himself!'
+    },
+    {
+      id: 6,
+      name: 'Placeholder 2',
+      imagesrc: 'https://d3oj2y7irryo5z.cloudfront.net/wp-content/uploads/2021/03/AA-Bay-Valley-Tech-2-1024x645.jpg',
+      imagealt: "Bay Valley Tech Directors Autograph.",
+      price: 99.99,
+      description: 'A unique autograph from the BVT director himself!'
     }
   ];
   
