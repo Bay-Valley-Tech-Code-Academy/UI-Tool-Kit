@@ -1,20 +1,17 @@
 export default function Example() {
-    return (
-      <div className="justify-center relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-  
-
-  <div
+  return (
+    <div className="justify-center relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+      <div
         aria-hidden="true"
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url('https://texturelabs.org/wp-content/uploads/Texturelabs_Metal_124S.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           opacity: 0.3,
-          pointerEvents: 'none',
+          pointerEvents: "none",
         }}
       />
-
 
         <div aria-hidden="true" className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl">
           <div
@@ -43,9 +40,10 @@ export default function Example() {
           <div className=" sm:columns-1 mx-auto max-w-2xl lg:mx-0">
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Our Achievements!</h2>
 
-            <p className="mt-6 sm:text-md leading-8 text-gray-300">
-                Bay Valley Tech works with a variety of charities such as  The Raymus Foundation   and The Salvation Army         
-            </p>
+          <p className="mt-6 sm:text-md leading-8 text-gray-300">
+            Bay Valley Tech works with a variety of charities such as The Raymus
+            Foundation and The Salvation Army
+          </p>
 
             <div className=" flex-row  "  >
               <a
@@ -72,47 +70,41 @@ export default function Example() {
 
         </div>
 
-            <div className="  h-50 w-50 ">
+          <div className="  h-50 w-50 ">
+            <p className="text-white  sm:text-lg">
+              Bay Valley Tech also works closely with CSU Stanislaus and
+              Stanislaus County WorkForce Development
+            </p>
 
-                        <p className="text-white  sm:text-lg">
-                            Bay Valley Tech also works closely with CSU Stanislaus and Stanislaus County WorkForce Development
-                        </p>
+            <div className=" columns-2 ">
+              <a
+                href="https://www.csustan.edu/"
+                className=" rounded-full w-10 h-10 px-5 pt-py-20 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100"
+              >
+                <div>
+                  <img
+                    alt=""
+                    src="https://universitypolicelivescan.com/img/logo.png"
+                  ></img>
+                </div>
+              </a>
 
-                    <div className =" columns-2 ">
-
-                  <a
-                      href="https://www.csustan.edu/"
-                      className=" rounded-full w-10 h-10 px-5 pt-py-20 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
-                    
-                      <div >
-                              <img alt="" src="https://universitypolicelivescan.com/img/logo.png">
-                              </img>
-                      </div> 
-                    </a>
-
-                    <a
-                      href="https://www.stanworkforce.com"
-                      className=" rounded-full w-10 h-10 px-5 pt-py-5 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
-                    
-                      <div>
-                              <img alt="" className="" src="https://www.stanworkforce.com/media/4r2hvtgx/logo_light.png">
-                              </img>
-                      </div> 
-                    </a>
-
-                   
-
-                    </div>
-
-                    
-                    
-              </div>
-
-
-          </div>        
-  
+              <a
+                href="https://www.stanworkforce.com"
+                className=" rounded-full w-10 h-10 px-5 pt-py-5 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100"
+              >
+                <div>
+                  <img
+                    alt=""
+                    className=""
+                    src="https://www.stanworkforce.com/media/4r2hvtgx/logo_light.png"
+                  ></img>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    )
-  }
-  
+    </div>
+  );
+}
