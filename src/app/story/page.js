@@ -16,10 +16,7 @@ export default function Example() {
       />
 
 
-        <div
-          aria-hidden="true"
-          className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
-        >
+        <div aria-hidden="true" className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl">
           <div
             style={{
               clipPath:
@@ -50,13 +47,13 @@ export default function Example() {
                 Bay Valley Tech works with a variety of charities such as  The Raymus Foundation   and The Salvation Army         
             </p>
 
-            <div className=" flex flex-col w-[100vw] items-center content-center"  >
+            <div className=" flex-row  "  >
               <a
                 href="https://www.raymusfoundation.org/focuses/"
-                className="  rounded-full w-30 h-auto px-30 pt-py-20 text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
+                className="  rounded-full   size-12   shadow-sm    ">
               
                 <div className ="">
-                        <img alt="" className="   sm:min-h-40 min-w-40 -mr-30 " src="https://www.gicancersalliance.org/wp-content/uploads/2017/10/RaymondFoundation_Logo_320x320.png">
+                        <img alt="" className="min-h-50 min-w-40 -mr-40 gap-y-10 "  src="https://www.gicancersalliance.org/wp-content/uploads/2017/10/RaymondFoundation_Logo_320x320.png">
                         </img>
                 </div> 
               </a>
@@ -65,10 +62,10 @@ export default function Example() {
 
               <a
                 href="https://www.salvationarmyusa.org/usn/"
-                className="  rounded-full  text-sm font-semibold text-white shadow-sm   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-100 gap-y-50 visited:text-gray-100">
+                className="  rounded-full  ">
               
-                <div className="">
-                        <img  alt="" className="  " src="https://salvationarmyowensound.ca/wp-content/uploads/2022/03/salvation-army-logo-crest-270px.png">
+                <div className="" style={{width: '15rem'}}>
+                        <img  alt="" className=" ml-20  "  src="https://salvationarmyowensound.ca/wp-content/uploads/2022/03/salvation-army-logo-crest-270px.png">
                         </img>
                 </div> 
               </a>
