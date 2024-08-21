@@ -114,7 +114,7 @@ export default function ProductList() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="group relative bg-[#F1FAEE] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105"
+                className="group relative bg-[#F1FAEE] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105 "
                 style={{
                   boxShadow: "3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)",
                   textDecoration: "none",
@@ -138,7 +138,7 @@ export default function ProductList() {
                 </div>
                 <div className="flex justify-between p-2 items-center">
                   <button
-                    className="bg-[#392F5A] text-white px-4 py-2 rounded-md hover:bg-white active:bg-[#F1FAEE] hover:text-[#392F5A] transition duration-150 ease-in-out"
+                    className="bg-[#392F5A]  px-4 py-2 rounded-md hover:bg-[#F2E6D7] hover:text-black text-[#F2E6D7]"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent triggering the product detail click
                       handleAddToCart(product);
