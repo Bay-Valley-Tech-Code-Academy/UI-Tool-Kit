@@ -3,18 +3,19 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="absolute w-screen">
       <div className="footer-container">
         <div className="footer-columns">
           <div className="footer-column">
             <div className="footer-logo">
-              <Image
+            <a href="/"><Image
                 
                 src="/images/bvt-logo.png "
                 alt="Logo"
                 width={70}
                 height={70}
               />
+            </a>
             </div>
           </div>
           <div className="footer-column">
