@@ -12,16 +12,29 @@ export default function ProductList() {
 
   const handleAddToCart = (product) => {
     // Retrieve the existing cart from localStorage
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    let newCart = [];
 
-    // Add the new product to the cart
-    const newCart = [...existingCart, product];
+    if (existingCart.some((item) => item.id === product.id)) {
+      newCart = existingCart.map((item) => {
+        if (item.id === product.id) {
+          return {
+            ...item,
+            quantity: Number(item.quantity) + Number(1),
+          };
+        }
+        return item;
+      });
+    } else {
+      const updatedProduct = { ...product, quantity: Number(1) };
+      newCart = [...existingCart, updatedProduct];
+    }
 
     // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    localStorage.setItem("cart", JSON.stringify(newCart));
 
     // Redirect to the shopping cart page
-    router.push('/cart');
+    router.push("/cart");
   };
 
   const handleCardClick = (id) => {
