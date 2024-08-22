@@ -1,4 +1,4 @@
-## test
+## test1
 ## PREREQUISITES
 1. Install PostgreSQL. (Uncheck 'Stack builder' and 'pgAdmin' when installing, we don't need those.)
  * Once PostgreSQL is installed, open your Command Promp and type ```psql```.
