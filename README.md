@@ -25,3 +25,5 @@ DB_NAME=productlist
 6. Run the program using ```npm run dev```.
 7. Go to http://localhost:3000 to view the website.
 8. Kill the program by pressing ```CTRL+C``` in the terminal.
+
+
