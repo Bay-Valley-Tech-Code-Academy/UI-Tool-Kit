@@ -137,7 +137,7 @@ export default function ProductList() {
               className="group relative bg-[#F1FAEE] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105 "
               onClick={() => handleCardClick(product.id)}
             >
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-48">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-56">
                   <img
                     alt={product.imagealt}
                     src={product.imagesrc}
@@ -145,16 +145,19 @@ export default function ProductList() {
                   />
                 </div>
                 <div className="flex-grow p-2">
-                  <h3 className="text-lg font-bold text-black text-left">
+                  <h3 className="text-lg font-semibold text-[#3F3D64] text-center">
                     {product.name}
                   </h3>
-                  <p className="mt-1 text-sm text-black text-left">
+                  <p className="mt-1 text-sm text-black text-center">
                     {product.description}
                   </p>
                 </div>
-                <div className="flex justify-between p-2 items-center">
+                <div className="flex justify-between ml-[10px] mr-[10px] p-2 items-left">
+                  <p className="text-md text-black ml-4">
+                    {`$`+product.price}
+                  </p>
                   <button
-                    className="bg-[#392F5A]  px-4 py-2 rounded-md hover:bg-[#F2E6D7] hover:text-black text-[#F2E6D7]"
+                    className="bg-blue-500 mb-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105"
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent triggering the product detail click
                       handleAddToCart(product);
@@ -162,9 +165,6 @@ export default function ProductList() {
                   >
                     Add to cart
                   </button>
-                  <p className="text-sm font-medium text-black ml-4">
-                    {product.price}
-                  </p>
                 </div>
               </div>
             ))}
