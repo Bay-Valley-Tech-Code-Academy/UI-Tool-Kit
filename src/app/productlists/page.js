@@ -10,6 +10,9 @@ import { useRouter } from "next/navigation";
 export default function ProductList() {
   const router = useRouter();
 
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+
   const handleAddToCart = (product) => {
     // Retrieve the existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -49,6 +52,10 @@ export default function ProductList() {
     };
   }, []);
 
+  const filteredProducts = selectedCategory
+  ? products.filter((product) => product.category === selectedCategory)
+  : products;
+
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] lg:min-h-screen">
       <PromoSection />
@@ -80,29 +87,42 @@ export default function ProductList() {
                       className="origin-top-right border border-white/5 bg-[#F1FAEE] mt-2 p-4 rounded-md w-40"
                     >
                       <MenuItem>
-                        <button className="group flex w-full p-1 hover:bg-neutral-300">
-                          Items
-                        </button>
-                      </MenuItem>
-                      <div className="my-1 h-px bg-black/5" />
-                      <MenuItem>
-                        <button className="group flex w-full p-1 hover:bg-neutral-200">
-                          Hoodies
-                        </button>
-                      </MenuItem>
-                      <div className="my-1 h-px bg-black/5" />
-                      <MenuItem>
-                        <button className="group flex w-full p-1 hover:bg-neutral-200">
+                        <button
+                          className="group flex w-full p-1 hover:bg-neutral-300"
+                          onClick={() => setSelectedCategory("shirt")}
+                        >
                           Shirts
                         </button>
                       </MenuItem>
                       <div className="my-1 h-px bg-black/5" />
                       <MenuItem>
-                        <button className="group flex w-full p-1 hover:bg-neutral-200">
+                        <button
+                          className="group flex w-full p-1 hover:bg-neutral-200"
+                          onClick={() => setSelectedCategory("sweater")}
+                        >
+                          Sweaters
+                        </button>
+                      </MenuItem>
+                      <div className="my-1 h-px bg-black/5" />
+                      <MenuItem>
+                        <button
+                          className="group flex w-full p-1 hover:bg-neutral-200"
+                          onClick={() => setSelectedCategory("miscellaneous")}
+                        >
                           Miscellaneous
                         </button>
                       </MenuItem>
+                      <div className="my-1 h-px bg-black/5" />
+                      <MenuItem>
+                        <button
+                          className="group flex w-full p-1 hover:bg-neutral-200"
+                          onClick={() => setSelectedCategory(null)}
+                        >
+                          All Items
+                        </button>
+                      </MenuItem>
                     </MenuItems>
+
                   </>
                 );
               }}
@@ -111,16 +131,12 @@ export default function ProductList() {
         </div>
         <div>
           <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="group relative bg-[#F1FAEE] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105 "
-                style={{
-                  boxShadow: "3px 8px 15.5px 3px rgba(34, 0, 85, 0.3)",
-                  textDecoration: "none",
-                }}
-                onClick={() => handleCardClick(product.id)}
-              >
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="group relative bg-[#F1FAEE] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105 "
+              onClick={() => handleCardClick(product.id)}
+            >
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-48">
                   <img
                     alt={product.imagealt}
