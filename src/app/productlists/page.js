@@ -145,7 +145,7 @@ export default function ProductList() {
                   />
                 </div>
                 <div className="flex-grow p-2">
-                  <h3 className="text-lg font-bold text-black text-left">
+                  <h3 className="text-lg font-bold text-[#3F3D64] text-left">
                     {product.name}
                   </h3>
                   <p className="mt-1 text-sm text-black text-left">
@@ -163,7 +163,7 @@ export default function ProductList() {
                     Add to cart
                   </button>
                   <p className="text-sm font-medium text-black ml-4">
-                    {product.price}
+                    {`$`+product.price}
                   </p>
                 </div>
               </div>
