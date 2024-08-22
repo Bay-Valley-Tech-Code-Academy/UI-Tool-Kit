@@ -50,7 +50,7 @@ a:hover {
 footer {
   background-color: #392F5A;
   color: white;
-  padding: 2rem;
+  padding-top: 2rem;
 }
 .footer-container {
   display: flex;
@@ -58,8 +58,9 @@ footer {
   align-items: flex-start;
 }
 .footer-logo {
-  flex: 0.5;
+  flex: 1;
   padding-top: 20px;
+  width: 40px;
 }
 .footer-columns {
   display: flex;
@@ -67,7 +68,7 @@ footer {
   flex: 3;
 }
 .footer-column {
-  margin-right: 1rem;
+  margin-right: .5rem;
 }
 .footer-column h4 {
   margin-bottom: 1rem;
