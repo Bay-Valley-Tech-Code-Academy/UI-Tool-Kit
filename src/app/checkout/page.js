@@ -111,6 +111,17 @@ export default function Checkout() {
                   />
                 </div>
                 <div className="mb-4">
+                  <label htmlFor="address" className="block text-base text-[#392F5A]">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    placeholder="Enter your address"
+                    className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+                <div className="mb-4">
                   <label htmlFor="zip" className="block text-base text-[#392F5A]">
                     ZIP Code
                   </label>
@@ -141,17 +152,6 @@ export default function Checkout() {
                 <p className="text-base text-[#392F5A]">Tax estimate</p>
                 <p className="text-base text-[#392F5A]">${taxEstimate}</p>
               </div>
-              <div className="mb-4">
-                  <label htmlFor="address" className="block text-base text-[#392F5A]">
-                    Address
-                  </label>
-                  <input
-                    type="text"
-                    id="address"
-                    placeholder="Enter your address"
-                    className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
               <hr className="mb-4" />
               <div className="flex justify-between mb-4">
                 <h2 className="font-bold text-lg text-base text-[#392F5A]">
