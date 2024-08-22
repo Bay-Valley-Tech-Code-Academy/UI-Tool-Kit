@@ -182,9 +182,11 @@ export default function ProductList() {
                           max="99"
                         ></input>
                       </div>
-                      <button className="bg-blue-500 mb-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105">
+                      <div className="flex justify-center">
+                      <button className="bg-blue-500 mb-2 mt-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105">
                         Add to cart
                       </button>
+                      </div>
                     </form>
                   </div>
                 </div>
