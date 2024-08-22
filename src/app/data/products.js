@@ -4,7 +4,7 @@ const products = [
     name: 'Bay Valley Tech T-Shirt',
     imagesrc: 'https://static.wixstatic.com/media/a4735d_6572a7b1f1b14288a656c75e46f3d4e4~mv2.png/v1/crop/x_201,y_71,w_648,h_633/fill/w_219,h_214,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Hero%20Model%20Image.png1',
     imagealt: "Bay Valley Tech Shirt.",
-    price: 'Free at events!',
+    price: 'Free',
     description: 'A comfortable T-shirt that gives you a sense of community...',
     category: 'shirt'
   },

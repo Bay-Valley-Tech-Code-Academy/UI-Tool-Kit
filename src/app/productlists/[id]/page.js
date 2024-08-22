@@ -77,7 +77,7 @@ export default function ProductPage() {
           <div className="mt-4 lg:mt-10">
             <h2 className="sr-only">Product information</h2>
             <p className="md:text-xl text-2xl font-bold tracking-tight text-white">
-              {product.price}
+              {`$`+product.price}
             </p>
 
             <AddToCartButton product={product}/>
