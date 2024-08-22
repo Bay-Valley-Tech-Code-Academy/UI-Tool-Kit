@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Decimal from "decimal.js";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -51,7 +51,6 @@ export default function Cart() {
         new Decimal(0)
       )
       .toFixed(2);
-
 
     setSubtotal(newSubtotal);
 
@@ -201,7 +200,7 @@ export default function Cart() {
                     onClick={() => router.push("/productlists")}
                     className="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
-                    Back to Product List
+                    Checkout
                   </button>
                 </div>
               </div>
