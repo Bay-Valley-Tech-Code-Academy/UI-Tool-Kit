@@ -58,7 +58,7 @@ export default function Cart() {
   };
 
   const updateQuantity = (id, newQuantity) => {
-    if (newQuantity === "" || newQuantity <= 0) {
+    if (newQuantity === "" || newQuantity <= 0 || isNaN(newQuantity)) {
       handleRemoveFromCart(id); // Remove the item if quantity is 0 or less
       return;
     }
