@@ -29,9 +29,6 @@ export default function AddToCartButton({ product }) {
 
     // Save the updated cart back to localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
-
-    // Redirect to the shopping cart page
-    router.push("/cart");
   };
 
   return (
@@ -46,17 +43,16 @@ export default function AddToCartButton({ product }) {
         <label htmlFor="quantity" className="text-white">
           How many:
         </label>
-        <select
+        <input
+          type="number"
           name="quantity"
           id="quantity"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
+          min="1"
+          max="99"
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
+        </input>
       </div>
       <button
         type="submit"
