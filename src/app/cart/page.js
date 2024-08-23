@@ -57,36 +57,15 @@ export default function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  const decreaseQuantity = (idToReduce) => {
-    const updatedCart = cart
-      .map((item) => {
-        if (item.id === idToReduce) {
-          const newQuantity = item.quantity - 1;
-          return newQuantity > 0 ? { ...item, quantity: newQuantity } : null;
-        }
-        return item;
-      })
-      .filter((item) => item !== null);
+  const updateQuantity = (id, newQuantity) => {
+    if (newQuantity <= 0) {
+      handleRemoveFromCart(id); // Remove the item if quantity is 0 or less
+      return;
+    }
 
-    setCart(updatedCart);
-    setSubtotal(
-      updatedCart
-        .filter((item) => !isNaN(parseFloat(item.price)))
-        .reduce(
-          (currentValue, item) =>
-            new Decimal(item.price).times(item.quantity).plus(currentValue),
-          new Decimal(0)
-        )
-        .toFixed(2)
-    );
-
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  };
-
-  const increaseQuantity = (idToIncrease) => {
     const updatedCart = cart.map((item) => {
-      if (item.id === idToIncrease) {
-        return { ...item, quantity: item.quantity + 1 };
+      if (item.id === id) {
+        return { ...item, quantity: newQuantity };
       }
       return item;
     });
@@ -117,7 +96,6 @@ export default function Cart() {
             <>
               <ul className="lg:w-1/2">
                 {cart.map((item) => {
-                  const [quantity, setQuantity] = useState(item.quantity);
                   return (
                     <li
                       key={item.id}
@@ -142,32 +120,24 @@ export default function Cart() {
                         <div className="flex items-end flex-wrap items-center">
                           <p className="pr-2">quantity:</p>
                           <button
-                            onClick={() => decreaseQuantity(item.id)}
-                            className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="mr-1 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           >
                             -
                           </button>
                           <input
+                          className="w-9"
                             type="number"
                             name={`quantity-${item.id}`}
                             id={`quantityProduct-${item.id}`}
                             value={item.quantity}
-                            onChange={(e) => setQuantity(e.target.value)}
-                            min="1"
-                            max="99"
-                          ></input>
-                          <input
-                            type="number"
-                            name={`quantity-${item.id}`}
-                            id={`quantityProduct-${item.id}`}
-                            value={quantity}
-                            onChange={(e) => setQuantity(e.target.value)}
+                            onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
                             min="1"
                             max="99"
                           ></input>
                           <button
-                            onClick={() => increaseQuantity(item.id)}
-                            className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="ml-1 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           >
                             +
                           </button>
