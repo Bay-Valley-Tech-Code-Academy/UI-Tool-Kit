@@ -29,9 +29,6 @@ export default function AddToCartButton({ product }) {
 
     // Save the updated cart back to localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
-
-    // Redirect to the shopping cart page
-    router.push("/cart");
   };
 
   return (
