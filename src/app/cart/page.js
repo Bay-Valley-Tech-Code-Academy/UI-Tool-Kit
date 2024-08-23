@@ -15,8 +15,7 @@ export default function Cart() {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       const cartItems = JSON.parse(savedCart);
-
-      // Convert price to numbers and filter out any invalid entries
+      
       const validCartItems = cartItems.filter(
         (item) => !isNaN(parseFloat(item.price))
       );
@@ -40,7 +39,6 @@ export default function Cart() {
     const updatedCart = cart.filter((item) => item.id !== idToRemove);
     setCart(updatedCart);
 
-    // Recalculate the subtotal based on the updated cart
     const newSubtotal = updatedCart
       .filter((item) => !isNaN(parseFloat(item.price)))
       .reduce(
@@ -58,11 +56,6 @@ export default function Cart() {
   };
 
   const updateQuantity = (id, newQuantity) => {
-    if (newQuantity === "" || newQuantity <= 0 || isNaN(newQuantity)) {
-      handleRemoveFromCart(id); // Remove the item if quantity is 0 or less
-      return;
-    }
-
     const updatedCart = cart.map((item) => {
       if (item.id === id) {
         return { ...item, quantity: newQuantity };
@@ -85,6 +78,19 @@ export default function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const handleQuantityChange = (id, newQuantity) => {
+    const parsedQuantity = parseInt(newQuantity);
+    if (!isNaN(parsedQuantity)) {
+      updateQuantity(id, parsedQuantity);
+    }
+  };
+
+  const handleBlur = (id, currentQuantity) => {
+    if (currentQuantity <= 0 || isNaN(currentQuantity)) {
+      handleRemoveFromCart(id);
+    }
+  };
+
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] custom-height">
       <div className="p-6 lg:ml-20 lg:mr-20">
@@ -103,7 +109,7 @@ export default function Cart() {
                     >
                       <div className="border-[#3D3860] border-8 rounded border-solid mr-4">
                         <img
-                          src={item.imagesrc || "/default-image.png"} // Fallback to default image if src is not available
+                          src={item.imagesrc || "/default-image.png"}
                           alt={item.imagealt || "No image available"}
                           className="w-24 h-24 object-cover rounded-md"
                         />
@@ -120,23 +126,35 @@ export default function Cart() {
                         <div className="flex items-end flex-wrap items-center">
                           <p className="pr-2">quantity:</p>
                           <button
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            onClick={() =>
+                            item.quantity > 1 &&
+                            updateQuantity(item.id, item.quantity - 1)}
                             className="mr-1 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           >
                             -
                           </button>
                           <input
-                          className="w-9"
+                            className="w-9"
                             type="number"
                             name={`quantity-${item.id}`}
                             id={`quantityProduct-${item.id}`}
                             value={item.quantity}
-                            onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                            onChange={(e) =>
+                              handleQuantityChange(item.id, e.target.value)
+                            }
+                            onBlur={() => handleBlur(item.id, item.quantity)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                handleBlur(item.id, item.quantity);
+                              }
+                            }}
                             min="1"
                             max="99"
                           ></input>
                           <button
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            onClick={() =>
+                            item.quantity < 99 &&
+                            updateQuantity(item.id, item.quantity + 1)}
                             className="ml-1 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                           >
                             +
