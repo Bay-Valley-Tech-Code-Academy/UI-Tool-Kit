@@ -12,8 +12,7 @@ export default function ProductList() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (product, quantity) => {
     // Retrieve the existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     let newCart = [];
@@ -23,21 +22,21 @@ export default function ProductList() {
         if (item.id === product.id) {
           return {
             ...item,
-            quantity: Number(item.quantity) + Number(1),
+            quantity: Number(item.quantity) + Number(quantity),
           };
         }
         return item;
       });
     } else {
-      const updatedProduct = { ...product, quantity: Number(1) };
+      const updatedProduct = { ...product, quantity: Number(quantity) };
       newCart = [...existingCart, updatedProduct];
     }
 
     // Save the updated cart back to localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
 
-    // Redirect to the shopping cart page
-    router.push("/cart");
+    //alert/pop up goes here
+    
   };
 
   const handleCardClick = (id) => {
@@ -53,8 +52,8 @@ export default function ProductList() {
   }, []);
 
   const filteredProducts = selectedCategory
-  ? products.filter((product) => product.category === selectedCategory)
-  : products;
+    ? products.filter((product) => product.category === selectedCategory)
+    : products;
 
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] lg:min-h-screen">
@@ -63,7 +62,9 @@ export default function ProductList() {
         <div className="flex justify-between items-center flex-col sm:flex-row">
           <div>
             <h1 className="text-[#FFF8F0]">Product List</h1>
-            <p className="text-[#FFF8F0]">Check out Bay Valley Tech's high quality merchandise!</p>
+            <p className="text-[#FFF8F0]">
+              Check out Bay Valley Tech's high quality merchandise!
+            </p>
           </div>
           <div className="bg-[#FFF8F0] py-2 p-4 h-10 rounded-md sm:block">
             <Menu as="div">
@@ -122,7 +123,6 @@ export default function ProductList() {
                         </button>
                       </MenuItem>
                     </MenuItems>
-
                   </>
                 );
               }}
@@ -131,43 +131,68 @@ export default function ProductList() {
         </div>
         <div>
           <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className="group relative bg-[#F1FAEE] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105 "
-              onClick={() => handleCardClick(product.id)}
-            >
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-56">
-                  <img
-                    alt={product.imagealt}
-                    src={product.imagesrc}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
+            {filteredProducts.map((product) => {
+              const [quantity, setQuantity] = useState(1);
+              return (
+                <div
+                  key={product.id}
+                  className="group relative bg-[#F1FAEE] shadow-lg block opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105 "
+                >
+                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-56">
+                    <img
+                      alt={product.imagealt}
+                      src={product.imagesrc}
+                      onClick={() => handleCardClick(product.id)}
+                      className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    />
+                  </div>
+                  <div className="flex-grow p-2">
+                    <h3 className="text-lg font-semibold text-[#3F3D64] text-center">
+                      {product.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-black text-center">
+                      {product.description}
+                    </p>
+                  </div>
+                  <div className="flex flex-col items-center ml-[10px] mr-[10px] p-2 items-left">
+                    <div>
+                      <p className="text-md text-black ml-4">
+                        {`$` + product.price}
+                      </p>
+                    </div>
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        handleAddToCart(product, quantity);
+                      }}
+                    >
+                      <div>
+                        <label
+                          htmlFor={`quantityProduct-${product.id}`}
+                          className="text-black pr-2"
+                        >
+                          How many:
+                        </label>
+                        <input
+                          type="number"
+                          name={`quantity-${product.id}`}
+                          id={`quantityProduct-${product.id}`}
+                          value={quantity}
+                          onChange={(e) => setQuantity(e.target.value)}
+                          min="1"
+                          max="99"
+                        ></input>
+                      </div>
+                      <div className="flex justify-center">
+                      <button className="bg-blue-500 mb-2 mt-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105">
+                        Add to cart
+                      </button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-                <div className="flex-grow p-2">
-                  <h3 className="text-lg font-semibold text-[#3F3D64] text-center">
-                    {product.name}
-                  </h3>
-                  <p className="mt-1 text-sm text-black text-center">
-                    {product.description}
-                  </p>
-                </div>
-                <div className="flex justify-between ml-[10px] mr-[10px] p-2 items-left">
-                  <p className="text-md text-black ml-4">
-                    {`$`+product.price}
-                  </p>
-                  <button
-                    className="bg-blue-500 mb-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105"
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent triggering the product detail click
-                      handleAddToCart(product);
-                    }}
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
