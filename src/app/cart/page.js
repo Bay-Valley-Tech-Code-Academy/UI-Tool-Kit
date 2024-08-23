@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Decimal from "decimal.js";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -51,7 +51,6 @@ export default function Cart() {
         new Decimal(0)
       )
       .toFixed(2);
-
 
     setSubtotal(newSubtotal);
 
@@ -117,49 +116,72 @@ export default function Cart() {
           {cart.length > 0 ? (
             <>
               <ul className="lg:w-1/2">
-                {cart.map((item) => (
-                  <li
-                    key={item.id}
-                    className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block mb-6 p-6 flex"
-                  >
-                    <div className="border-[#3D3860] border-8 rounded border-solid mr-4">
-                      <img
-                        src={item.imagesrc || "/default-image.png"} // Fallback to default image if src is not available
-                        alt={item.imagealt || "No image available"}
-                        className="w-24 h-24 object-cover rounded-md"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-between">
-                      <div>
-                        <h2 className="text-lg font-medium text-[#392F5A]">
-                          {item.name}
-                        </h2>
-                        <p className="text-base text-[#392F5A]">{item.price}</p>
-                      </div>
-                      <div className="flex items-end flex-wrap items-center">
-                        <p className="pr-2">quantity: {item.quantity}</p>
-                        <button
-                          onClick={() => decreaseQuantity(item.id)}
-                          className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                          -
-                        </button>
-                        <button
-                          onClick={() => increaseQuantity(item.id)}
-                          className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => handleRemoveFromCart(item.id)}
-                      className="ml-auto text-[#392F5A] hover:text-red-800 absolute top-1 right-2"
+                {cart.map((item) => {
+                  const [quantity, setQuantity] = useState(item.quantity);
+                  return (
+                    <li
+                      key={item.id}
+                      className="group relative bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] block mb-6 p-6 flex"
                     >
-                      X
-                    </button>
-                  </li>
-                ))}
+                      <div className="border-[#3D3860] border-8 rounded border-solid mr-4">
+                        <img
+                          src={item.imagesrc || "/default-image.png"} // Fallback to default image if src is not available
+                          alt={item.imagealt || "No image available"}
+                          className="w-24 h-24 object-cover rounded-md"
+                        />
+                      </div>
+                      <div className="flex flex-col justify-between">
+                        <div>
+                          <h2 className="text-lg font-medium text-[#392F5A]">
+                            {item.name}
+                          </h2>
+                          <p className="text-base text-[#392F5A]">
+                            {item.price}
+                          </p>
+                        </div>
+                        <div className="flex items-end flex-wrap items-center">
+                          <p className="pr-2">quantity:</p>
+                          <button
+                            onClick={() => decreaseQuantity(item.id)}
+                            className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          >
+                            -
+                          </button>
+                          <input
+                            type="number"
+                            name={`quantity-${item.id}`}
+                            id={`quantityProduct-${item.id}`}
+                            value={item.quantity}
+                            onChange={(e) => setQuantity(e.target.value)}
+                            min="1"
+                            max="99"
+                          ></input>
+                          <input
+                            type="number"
+                            name={`quantity-${item.id}`}
+                            id={`quantityProduct-${item.id}`}
+                            value={quantity}
+                            onChange={(e) => setQuantity(e.target.value)}
+                            min="1"
+                            max="99"
+                          ></input>
+                          <button
+                            onClick={() => increaseQuantity(item.id)}
+                            className="mr-2 rounded-md border border-transparent bg-indigo-600 px-2 py-1 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => handleRemoveFromCart(item.id)}
+                        className="ml-auto text-[#392F5A] hover:text-red-800 absolute top-1 right-2"
+                      >
+                        X
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
               <div className="lg:w-1/3">
                 <div className="bg-gradient-to-b from-[#FFF8F0] to-[#FFF8F0] shadow-lg rounded-[11px] p-4">
