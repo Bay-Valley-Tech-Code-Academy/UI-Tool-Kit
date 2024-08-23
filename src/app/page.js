@@ -16,7 +16,7 @@ export default function Home() {
             </p>
             <div className="mt-10 flex items-center justify-center">
               <a
-                href="productlists#"
+                href="documentation"
                 className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105"
               >
                 Get Started
