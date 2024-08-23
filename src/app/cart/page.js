@@ -58,7 +58,7 @@ export default function Cart() {
   };
 
   const updateQuantity = (id, newQuantity) => {
-    if (newQuantity <= 0) {
+    if (newQuantity === "" || newQuantity <= 0) {
       handleRemoveFromCart(id); // Remove the item if quantity is 0 or less
       return;
     }
