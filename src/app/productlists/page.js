@@ -36,6 +36,7 @@ export default function ProductList() {
     localStorage.setItem("cart", JSON.stringify(newCart));
 
     //alert/pop up goes here
+    
   };
 
   const handleCardClick = (id) => {
