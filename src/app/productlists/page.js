@@ -11,6 +11,7 @@ export default function ProductList() {
   const router = useRouter();
 
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [quantity, setQuantity] = useState({});
 
   const handleAddToCart = (product, quantity) => {
     // Retrieve the existing cart from localStorage
@@ -36,7 +37,6 @@ export default function ProductList() {
     localStorage.setItem("cart", JSON.stringify(newCart));
 
     //alert/pop up goes here
-    
   };
 
   const handleCardClick = (id) => {
@@ -54,6 +54,13 @@ export default function ProductList() {
   const filteredProducts = selectedCategory
     ? products.filter((product) => product.category === selectedCategory)
     : products;
+
+  const handleQuantityChange = (id, value) => {
+    setQuantity({
+      ...quantity,
+      [id]: value,
+    });
+  };
 
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] lg:min-h-screen">
@@ -132,7 +139,6 @@ export default function ProductList() {
         <div>
           <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {filteredProducts.map((product) => {
-              const [quantity, setQuantity] = useState(1);
               return (
                 <div
                   key={product.id}
@@ -163,7 +169,7 @@ export default function ProductList() {
                     <form
                       onSubmit={(e) => {
                         e.preventDefault();
-                        handleAddToCart(product, quantity);
+                        handleAddToCart(product, quantity[product.id] || 1);
                       }}
                     >
                       <div>
@@ -177,16 +183,16 @@ export default function ProductList() {
                           type="number"
                           name={`quantity-${product.id}`}
                           id={`quantityProduct-${product.id}`}
-                          value={quantity}
-                          onChange={(e) => setQuantity(e.target.value)}
+                          value={quantity.id}
+                          onChange={(e) => handleQuantityChange(product.id,e.target.value)}
                           min="1"
                           max="99"
                         ></input>
                       </div>
                       <div className="flex justify-center">
-                      <button className="bg-blue-500 mb-2 mt-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105">
-                        Add to cart
-                      </button>
+                        <button className="bg-blue-500 mb-2 mt-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105">
+                          Add to cart
+                        </button>
                       </div>
                     </form>
                   </div>
