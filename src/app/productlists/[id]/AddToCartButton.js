@@ -5,8 +5,9 @@ import { useState } from "react";
 
 export default function AddToCartButton({ product }) {
   const [quantity, setQuantity] = useState(1);
+  const [notification, setNotification] = useState(''); // Notification state
   const router = useRouter();
-  console.log(product)
+
   const handleAddToCart = () => {
     // Retrieve the existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -29,6 +30,14 @@ export default function AddToCartButton({ product }) {
 
     // Save the updated cart back to localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
+
+    // Show notification
+    setNotification(`${product.name} has been added to your cart`);
+
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+      setNotification('');
+    }, 3000);
   };
 
   return (
@@ -39,6 +48,13 @@ export default function AddToCartButton({ product }) {
         handleAddToCart();
       }}
     >
+      {/* Notification */}
+      {notification && (
+        <div className="fixed top-0 left-0 right-0 bg-green-500 text-white text-center py-2 z-50">
+          {notification}
+        </div>
+      )}
+      
       <div className="flex justify-evenly">
         <label htmlFor="quantity" className="text-white">
           How many:
