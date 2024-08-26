@@ -12,10 +12,10 @@ export default function ProductList() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [quantity, setQuantity] = useState({});
-  const [hoveredProductId, setHoveredProductId] = useState(null); // New state for hover tracking
+  const [hoveredProductId, setHoveredProductId] = useState(null);
+  const [notification, setNotification] = useState('');
 
   const handleAddToCart = (product, quantity) => {
-    // Retrieve the existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     let newCart = [];
 
@@ -34,20 +34,21 @@ export default function ProductList() {
       newCart = [...existingCart, updatedProduct];
     }
 
-    // Save the updated cart back to localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
 
-    //alert/pop up goes here
+    setNotification(`${product.name} has been added to your cart`);
+
+    setTimeout(() => {
+      setNotification('');
+    }, 3000);
   };
 
   const handleCardClick = (id) => {
-    // Navigate to the dynamic product page
     router.push(`/productlists/${id}`);
   };
 
   useEffect(() => {
     return () => {
-      // Clean up the class on component unmount
       document.documentElement.style.overflowY = "";
     };
   }, []);
@@ -65,6 +66,13 @@ export default function ProductList() {
 
   return (
     <div className="bg-gradient-to-r from-[#3D3860] via-[#392F5A] to-[#3F3D64] lg:min-h-screen">
+      {/* Notification */}
+      {notification && (
+        <div className="fixed top-0 left-0 right-0 bg-green-500 text-white text-center py-2 z-50">
+          {notification}
+        </div>
+      )}
+
       <PromoSection />
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex flex-col gap-20">
         <div className="flex justify-between items-center flex-col sm:flex-row">
