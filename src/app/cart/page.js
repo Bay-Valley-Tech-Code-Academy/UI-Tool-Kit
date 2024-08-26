@@ -208,7 +208,7 @@ export default function Cart() {
                     </p>
                   </div>
                   <button
-                    onClick={() => router.push("/productlists")}
+                    onClick={() => router.push("/checkout")}
                     className="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-orange-500 px-8 py-3 text-base font-medium text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 transition-transform transform hover:-translate-y-1 scale-105 shadow-lg"
                   >
                     Checkout
