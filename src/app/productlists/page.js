@@ -152,11 +152,10 @@ export default function ProductList() {
                   <img
                     alt={product.imagealt}
                     src={product.imagesrc}
-                    onClick={() => handleCardClick(product.id)}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                   {hoveredProductId === product.id && (
-                    <div className="absolute inset-0 bg-gray-800 text-white p-4 rounded-lg flex items-center justify-center opacity-90">
+                    <div className="absolute inset-0 bg-gray-800 text-white p-4 rounded-lg flex items-center justify-center opacity-90 cursor-pointer" onClick={() => handleCardClick(product.id)}>
                       <p className="text-center">{product.description}</p>
                     </div>
                   )}
