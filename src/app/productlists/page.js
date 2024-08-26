@@ -152,23 +152,24 @@ export default function ProductList() {
                 key={product.id}
                 className="group relative bg-[#F1FAEE] shadow-lg opacity-90 flex flex-col h-full max-h-[400px] rounded-md transition-transform transform hover:scale-105"
               >
-                <div
-                  className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-56"
-                  onMouseEnter={() => setHoveredProductId(product.id)}
-                  onMouseLeave={() => setHoveredProductId(null)}
-                >
-                  <img
-                    alt={product.imagealt}
-                    src={product.imagesrc}
-                    onClick={() => handleCardClick(product.id)}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
-                  {hoveredProductId === product.id && (
-                    <div className="absolute inset-0 bg-gray-800 text-white p-4 rounded-lg flex items-center justify-center opacity-90">
-                      <p className="text-center">{product.description}</p>
-                    </div>
-                  )}
-                </div>
+              <div
+                className="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-t-md bg-gray-200 lg:aspect-none lg:h-56"
+                onMouseEnter={() => setHoveredProductId(product.id)}
+                onMouseLeave={() => setHoveredProductId(null)}
+                onClick={() => handleCardClick(product.id)} // Navigate to product page
+              >
+                <img
+                  alt={product.imagealt}
+                  src={product.imagesrc}
+                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                />
+                {hoveredProductId === product.id && (
+                  <div className="absolute inset-0 bg-gray-800 text-white p-4 rounded-lg flex items-center justify-center opacity-90">
+                    <p className="text-center">{product.description}</p>
+                  </div>
+                )}
+              </div>
+
                 <div className="flex-grow p-2">
                   <h3 className="text-lg font-semibold text-[#3F3D64] text-center">
                     {product.name}
@@ -176,15 +177,14 @@ export default function ProductList() {
                 </div>
                 <div className="flex flex-col items-center ml-[10px] mr-[10px] p-2 items-left">
                   <div>
-                    <p className="text-md text-black ml-4">
-                      {`$` + product.price}
-                    </p>
+                    <p className="text-md text-black ml-4">{`$` + product.price}</p>
                   </div>
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
                       handleAddToCart(product, quantity[product.id] || 1);
                     }}
+                    onClick={(e) => e.stopPropagation()} // Prevent form click from triggering card click
                   >
                     <div>
                       <label
@@ -201,15 +201,20 @@ export default function ProductList() {
                         onChange={(e) => handleQuantityChange(product.id, e.target.value)}
                         min="1"
                         max="99"
+                        onClick={(e) => e.stopPropagation()} // Prevent input click from triggering card click
                       ></input>
                     </div>
                     <div className="flex justify-center">
-                      <button className="bg-blue-500 mb-2 mt-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105">
+                      <button
+                        className="bg-blue-500 mb-2 mt-2 px-3 py-2 rounded-2xl text-white shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-transform transform hover:-translate-y-1 scale-105"
+                        onClick={(e) => e.stopPropagation()} // Prevent button click from triggering card click
+                      >
                         Add to cart
                       </button>
                     </div>
                   </form>
                 </div>
+
               </div>
             ))}
           </div>
