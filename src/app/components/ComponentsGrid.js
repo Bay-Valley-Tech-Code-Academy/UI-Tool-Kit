@@ -24,6 +24,7 @@ const ComponentsGrid = () => {
   </div>
 </nav>
       `,
+      language: "jsx",
     },
     {
       name: "Footer",
@@ -54,6 +55,7 @@ const ComponentsGrid = () => {
   </div>
 </footer>
       `,
+      language: "jsx",
     },
     {
       name: "Hero Section",
@@ -90,6 +92,7 @@ const ComponentsGrid = () => {
   </main>
 </div>
       `,
+      language: "jsx",
     },
     {
       name: "Card",
@@ -126,6 +129,7 @@ const ComponentsGrid = () => {
   </div>
 </div>
       `,
+      language: "jsx",
     },
   ];
 
@@ -140,11 +144,8 @@ const ComponentsGrid = () => {
               <p className="text-gray-600">{component.description}</p>
             </div>
           }
-          backContent={
-            <pre className="p-4 text-sm overflow-auto h-full">
-              <code>{component.code}</code>
-            </pre>
-          }
+          backContent={component.code}
+          language={component.language}
         />
       ))}
     </div>
