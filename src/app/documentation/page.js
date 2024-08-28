@@ -223,13 +223,15 @@ export default function DocumentationLayout() {
           </section>
 
           {/* Components Section */}
-          <section id="components">
+          <section id="components" className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Components</h2>
             <p className="text-gray-700 mb-6">
               Here you can find detailed information about the components used
               in the project.
             </p>
-            <ComponentsGrid />
+            <div className="mt-8">
+              <ComponentsGrid />
+            </div>
           </section>
 
           {/* FAQ Section */}
