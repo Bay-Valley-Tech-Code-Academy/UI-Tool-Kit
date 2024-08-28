@@ -1,4 +1,6 @@
 import React from "react";
+import FlippingCard from "../components/FlippingCard";
+import ComponentsGrid from "../components/ComponentsGrid";
 
 export default function DocumentationLayout() {
   return (
@@ -227,6 +229,7 @@ export default function DocumentationLayout() {
               Here you can find detailed information about the components used
               in the project.
             </p>
+            <ComponentsGrid />
           </section>
 
           {/* FAQ Section */}
