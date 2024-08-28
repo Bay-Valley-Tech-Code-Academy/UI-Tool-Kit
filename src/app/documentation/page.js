@@ -1,4 +1,6 @@
 import React from "react";
+import FlippingCard from "../components/FlippingCard";
+import ComponentsGrid from "../components/ComponentsGrid";
 
 export default function DocumentationLayout() {
   return (
@@ -25,6 +27,11 @@ export default function DocumentationLayout() {
                 </a>
               </li>
               <li>
+                <a href="#prerequisites" className="text-white">
+                  Prerequisites
+                </a>
+              </li>
+              <li>
                 <a href="#getting-started" className="text-white ">
                   Getting Started
                 </a>
@@ -37,11 +44,6 @@ export default function DocumentationLayout() {
               <li>
                 <a href="#components" className="text-white ">
                   Components
-                </a>
-              </li>
-              <li>
-                <a href="#api-reference" className="text-white ">
-                  API Reference
                 </a>
               </li>
               <li>
@@ -80,6 +82,54 @@ export default function DocumentationLayout() {
             <p className="text-gray-700 mb-6">
               This is a Next.js project bootstrapped with{" "}
               <code>create-next-app</code>.
+            </p>
+          </section>
+
+          {/* Prerequisites Section */}
+          <section id="prerequisites">
+            <h2 className="text-3xl font-bold mb-4">Prerequisites</h2>
+            <p className="text-gray-700 mb-6">
+              Before you begin, make sure you have the following tools installed
+              on your system:
+            </p>
+            <ul className="list-disc list-inside text-gray-700 mb-6">
+              <li>
+                <strong>Git</strong> - Version control system. You can download
+                it from{" "}
+                <a
+                  href="https://git-scm.com/"
+                  className="text-indigo-600 hover:underline"
+                >
+                  git-scm.com
+                </a>
+                .
+              </li>
+              <li>
+                <strong>Node.js</strong> - The latest stable version is
+                recommended. You can download it from{" "}
+                <a
+                  href="https://nodejs.org/"
+                  className="text-indigo-600 hover:underline"
+                >
+                  nodejs.org
+                </a>
+                .
+              </li>
+              <li>
+                <strong>Visual Studio Code</strong> - A powerful code editor.
+                You can download it from{" "}
+                <a
+                  href="https://code.visualstudio.com/"
+                  className="text-indigo-600 hover:underline"
+                >
+                  code.visualstudio.com
+                </a>
+                .
+              </li>
+            </ul>
+            <p className="text-gray-700 mb-6">
+              Ensure that you have these tools installed and configured before
+              proceeding with the setup instructions.
             </p>
           </section>
 
@@ -179,14 +229,7 @@ export default function DocumentationLayout() {
               Here you can find detailed information about the components used
               in the project.
             </p>
-          </section>
-
-          {/* API Reference Section */}
-          <section id="api-reference">
-            <h2 className="text-3xl font-bold mb-4">API Reference</h2>
-            <p className="text-gray-700 mb-6">
-              Detailed API reference and examples can be found in this section.
-            </p>
+            <ComponentsGrid />
           </section>
 
           {/* FAQ Section */}
