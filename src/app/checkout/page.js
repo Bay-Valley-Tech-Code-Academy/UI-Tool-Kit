@@ -20,9 +20,9 @@ export default function Checkout() {
             <div className="md:grid grid-cols-3 md:gap-8 sm:p-6 p-10">
                 <div className="bg-[#332E4B] rounded-lg sm:p-10 p-6 col-span-2">
                     <div className="flex justify-between">
-                        <p className="justify-start font-semibold sm:text-2xl md:text-2xl">Checkout</p>
+                        <p className="justify-start font-semibold xs:text-lg sm:text-2xl md:text-2xl">Checkout</p>
                         <Link href="/productlists">
-                            <p className="justify-end underline underline-offset-2">Back to products</p>
+                            <p className="justify-end underline underline-offset-2 xs:text-sm">Back to products</p>
                         </Link>
                     </div>
                     <form>
@@ -32,28 +32,28 @@ export default function Checkout() {
                                 <label htmlFor="country" className="block sm:text-lg">Country</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm md:h-9 p-1 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm md:h-9 p-1 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                             <div>
                                 <label htmlFor="state" className="block sm:text-lg">State</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                             <div>
                                 <label htmlFor="city" className="block sm:text-lg">City</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                             <div>
                                 <label htmlFor="zip_code" className="block sm:text-lg">Zip Code</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                         </div>
@@ -63,28 +63,28 @@ export default function Checkout() {
                                 <label htmlFor="card_name" className="block">Name on Card</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                             <div>
                                 <label htmlFor="security_code" className="block sm:text-lg">Security Code</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm h-9 p-1 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                             <div>
                                 <label htmlFor="card_number" className="block sm:text-lg">Card Number</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm p-1 h-9 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm p-1 h-9 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                             <div>
                                 <label htmlFor="expiration_date" className="block sm:text-lg">Expiration Date</label>
                                 <input
                                     type="text"
-                                    className="text-white bg-inherit outline outline-1 rounded-sm p-1 h-9 sm:w-full w-96"
+                                    className="text-white bg-inherit outline outline-1 rounded-sm p-1 h-9 xs:w-56 sm:w-full w-96"
                                 />
                             </div>
                         </div>
