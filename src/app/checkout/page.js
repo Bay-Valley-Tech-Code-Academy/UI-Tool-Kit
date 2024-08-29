@@ -1,7 +1,7 @@
 "use client"
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Decimal from "decimal.js";
 
 export default function Checkout() {
     const [checkoutData, setCheckoutData] = useState({
@@ -14,6 +14,65 @@ export default function Checkout() {
         security_code: '',
         expiration_date: ''
     });
+
+    const [cart, setCart] = useState([]);
+    const [shippingEstimate, setShippingEstimate] = useState(9.99);
+    const [taxEstimate, setTaxEstimate] = useState(32.99);
+    const [subtotal, setSubtotal] = useState(0);
+    const [total, setTotal] = useState(0);
+    const [promoCode, setPromoCode] = useState('');
+    const [discount, setDiscount] = useState(0);
+    const [totalBeforeDiscount, setTotalBeforeDiscount] = useState(0);
+
+    useEffect(() => {
+        const savedCart = localStorage.getItem("cart");
+        const savedShippingEstimate = localStorage.getItem("shippingEstimate");
+        const savedTaxEstimate = localStorage.getItem("taxEstimate");
+
+        if (savedCart) {
+            const cartItems = JSON.parse(savedCart);
+            setCart(cartItems);
+
+            const validCartItems = cartItems.filter(
+            (item) => !isNaN(parseFloat(item.price))
+            );
+            
+            const calculatedSubtotal = validCartItems
+            .reduce(
+                (currentValue, item) =>
+                new Decimal(parseFloat(item.price))
+                    .times(item.quantity)
+                    .plus(currentValue),
+                new Decimal(0)
+            )
+            .toFixed(2);
+            setSubtotal(parseFloat(calculatedSubtotal));
+        }
+
+        if (savedShippingEstimate) {
+        setShippingEstimate(parseFloat(savedShippingEstimate));
+        }
+        
+        if (savedTaxEstimate) {
+        setTaxEstimate(parseFloat(savedTaxEstimate));
+        }
+
+        const totalBeforeDiscount = subtotal + shippingEstimate + taxEstimate;
+        setTotalBeforeDiscount(totalBeforeDiscount.toFixed(2));
+
+        const total = subtotal + shippingEstimate + taxEstimate - discount;
+        setTotal(total.toFixed(2));
+    }, [subtotal, shippingEstimate, taxEstimate, discount]);
+
+    const applyPromoCode = () => {
+        if (promoCode === "promoBVT") {
+            const discountAmount = subtotal * 0.1; // 10% discount
+            setDiscount(discountAmount);
+        } else {
+            alert("Invalid promo code");
+            setDiscount(0);
+        }
+    };
 
     return (
         <div className="text-white">
@@ -91,43 +150,58 @@ export default function Checkout() {
                     </form>
                 </div>
                 <div className="order-summary flex flex-col sm:mt-[-28px] md:mt-0 sm:gap-1 md:gap-2 bg-[#332E4B] sm:p-10 p-4 rounded-lg">
-                <p className="font-semibold text-xl">Order Summary</p>
-                    <div className="flex">
-                        <img 
-                            src="/images/bvt_logo.png" 
-                            className="w-16" 
-                        />
-                        <p>Bay Valley Tech Logo</p>
-                    </div>
-                    <div className="flex">
-                        <img 
-                            src="/images/bvt_logo.png" 
-                            className="w-16" 
-                        />
-                        <p>Bay Valley Tech Logo</p>
-                    </div>
+                    <p className="font-semibold text-xl">Order Summary</p>
+                    {cart.map((item) => {
+                        return (
+                            <li
+                            key={item.id}
+                            className="flex group relative rounded-[11px] mb-1 p-3 "
+                            >
+                                <div className="border-2 rounded border-solid mr-4">
+                                    <img
+                                    src={item.imagesrc || "/default-image.png"}
+                                    alt={item.imagealt || "No image available"}
+                                    className="w-12 h-12 object-cover rounded-md"
+                                    />
+                                </div>
+                                <div className="flex flex-col justify-between">
+                                    <div>
+                                    <h2 className="text-lg font-medium text-white">
+                                        {item.name} ( {item.quantity} )
+                                    </h2>
+                                    <p className="text-base text-white">
+                                        {item.price}
+                                    </p>
+                                    </div>
+                                </div>
+                            </li>
+                        );
+                        })}
                     <div className="flex gap-0">
                         <div>
                             <label className="block">Promo Code</label>
                             <input
-                                type="text"
                                 className="text-white bg-inherit outline outline-1 rounded-sm p-1 h-9 sm:w-full md:w-60"
+                                type="text" 
+                                value={promoCode} 
+                                onChange={(e) => setPromoCode(e.target.value)} 
                             />
-                            <button
+                            <button 
                                 className="bg-white text-black h-10 text-sm w-24 rounded-md ml-1"
-                            >Apply
-                        </button>
+                                onClick={applyPromoCode} 
+                                >Apply
+                            </button>
                         </div>
                     </div>
-                    <div className="text-md">    
-                        <p>Original Price:</p>
-                        <p>Coupon Discount:</p>
-                        <p>Total:</p>
+                    <div className="text-md">
+                        <p>Original Price: ${totalBeforeDiscount} </p>
+                        <p>Coupon Discount: -${discount.toFixed(2)}</p>
+                        <p>Total: ${total} </p>
                     </div>
                     <div className="flex justify-center">
                         <button
                             className="bg-[#656BF3] p-2 rounded-md mt-4 sm:text-lg sm:w-full w-72 justify-center"
-                        >Proceed to Pay
+                            >Proceed to Pay
                         </button>
                     </div>
                 </div>
