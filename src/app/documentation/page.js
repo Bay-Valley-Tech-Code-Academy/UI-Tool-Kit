@@ -4,7 +4,7 @@ import ComponentsGrid from "../components/ComponentsGrid";
 
 export default function DocumentationLayout() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-gray-300">
       {/* Header */}
       <header className="bg-blue-500 text-white p-4">
         <h1 className="text-2xl font-bold">Documentation</h1>
