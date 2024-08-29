@@ -167,7 +167,7 @@ export default function Checkout() {
                                 <div className="flex flex-col justify-between">
                                     <div>
                                     <h2 className="text-lg font-medium text-white">
-                                        {item.name} ( {item.quantity} )
+                                        {item.name} ({item.quantity})
                                     </h2>
                                     <p className="text-base text-white">
                                         {item.price}
@@ -194,7 +194,7 @@ export default function Checkout() {
                         </div>
                     </div>
                     <p>Original Price: ${totalBeforeDiscount} </p>
-                    <p>Coupon Discount: -${discount.toFixed(2)}</p>
+                    <p>Coupon Discount: {discount > 0 && (<inline> ${discount.toFixed(2)}</inline>)} </p>
                     <p>Total: ${total} </p>
                     <div className="flex justify-center">
                         <button
