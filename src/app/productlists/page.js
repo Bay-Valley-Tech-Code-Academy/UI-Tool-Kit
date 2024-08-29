@@ -9,11 +9,26 @@ import { useRouter } from "next/navigation";
 
 export default function ProductList() {
   const router = useRouter();
-
+  const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [quantity, setQuantity] = useState({});
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [notification, setNotification] = useState('');
+
+  // Fetch products from the API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        setProducts(data);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleAddToCart = (product, quantity) => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];

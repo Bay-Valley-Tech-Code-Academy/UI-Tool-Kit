@@ -1,27 +1,24 @@
-// app/api/products/route.js
+import { NextResponse } from 'next/server';
+import { Pool } from 'pg';
 
-import pool from "@/app/data/postgres"; // Adjust the path if necessary
+// Configure your PostgreSQL connection
+const pool = new Pool({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+});
 
-export async function GET(request) {
+export async function GET() {
   try {
     const client = await pool.connect();
-    const result = await client.query("SELECT * FROM products");
+    const result = await client.query('SELECT * FROM products');
     client.release();
-    
-    return new Response(JSON.stringify(result.rows), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  } catch (error) {
-    console.error("Error fetching products: ", error);
-    
-    return new Response(JSON.stringify({ error: "Failed to fetch products" }), {
-      status: 500,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+
+    return NextResponse.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching products', err);
+    return NextResponse.error(new Error('Failed to fetch products'));
   }
 }
