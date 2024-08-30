@@ -25,6 +25,7 @@ const ComponentsGrid = () => {
 </nav>
       `,
       language: "jsx",
+      image: "/images/navbar.jpg", // Placeholder image URL
     },
     {
       name: "Footer",
@@ -56,6 +57,7 @@ const ComponentsGrid = () => {
 </footer>
       `,
       language: "jsx",
+      image: "/images/footer.png", // Placeholder image URL
     },
     {
       name: "Hero Section",
@@ -93,6 +95,7 @@ const ComponentsGrid = () => {
 </div>
       `,
       language: "jsx",
+      image: "/images/hero-section.png", // Placeholder image URL
     },
     {
       name: "Card",
@@ -130,22 +133,22 @@ const ComponentsGrid = () => {
 </div>
       `,
       language: "jsx",
+      image: "/images/card.jpg", // Placeholder image URL
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {components.map((component, index) => (
         <FlippingCard
           key={index}
-          frontContent={
-            <div className="h-full flex flex-col justify-between p-6">
-              <h3 className="text-xl font-bold mb-2">{component.name}</h3>
-              <p className="text-gray-600">{component.description}</p>
-            </div>
-          }
+          frontContent={{
+            title: component.name,
+            description: component.description,
+          }}
           backContent={component.code}
           language={component.language}
+          image={component.image}
         />
       ))}
     </div>
