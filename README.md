@@ -18,6 +18,8 @@ DB_PORT=5432
 DB_USER=postgres
 DB_PASSWORD=[your postgreSQL password here]
 DB_NAME=productlist
+DATABASE_URL=postgresql://[your username]:[your password]@localhost:5432/productlist
+
 
 ```
 4. In terminal, type ```psql -U postgres -f src/app/data/create_database.sql```. This creates the database for you.

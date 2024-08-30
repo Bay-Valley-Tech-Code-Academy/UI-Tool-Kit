@@ -63,9 +63,9 @@ export default function Checkout() {
     };
     
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         if (validateForm()) {
-            setIsSubmitting(true);
+            setIsSubmitting(true)
     
             try {
                 const response = await fetch('/api/checkout', {
@@ -73,31 +73,27 @@ export default function Checkout() {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(checkoutData),
+                    body: JSON.stringify({ ...checkoutData, cart }), // Include cart data
                 });
     
-                const result = await response.json();
+                const result = await response.json()
     
                 if (response.ok) {
                     console.log(result.message);
-                    // Clear cart items from localStorage and reset cart state
-                    localStorage.removeItem("cart");
+                    localStorage.removeItem("cart")
                     setCart([]);
-                    
-                    // Redirect to the order complete page
-                    router.push("/ordercomplete");
+                    router.push("/ordercomplete")
                 } else {
-                    console.error(result.message);
-                    // Handle error
+                    console.error(result.message)
                 }
             } catch (error) {
-                console.error('Error:', error);
-                // Handle fetch error
+                console.error('Error:', error)
             } finally {
-                setIsSubmitting(false);
+                setIsSubmitting(false)
             }
         }
     };
+    
     
     return (
         <div className="text-white p-4">
