@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Decimal from "decimal.js";
 import { useRouter } from "next/navigation";
