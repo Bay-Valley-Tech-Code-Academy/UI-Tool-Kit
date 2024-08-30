@@ -1,63 +1,106 @@
-import React from "react";
-import FlippingCard from "../components/FlippingCard";
+"use client";
+import React, { useState } from "react";
 import ComponentsGrid from "../components/ComponentsGrid";
 
 export default function DocumentationLayout() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       {/* Header */}
-      <header className="bg-blue-500 text-white p-4">
-        <h1 className="text-2xl font-bold">Documentation</h1>
+      <header className="bg-blue-500 text-white p-4 flex justify-between items-center">
+        <h1 className="text-xl md:text-2xl font-bold">Documentation</h1>
+        <button className="md:hidden text-white" onClick={toggleSidebar}>
+          {isSidebarOpen ? "Close" : "Menu"}
+        </button>
       </header>
 
       {/* Main Content Area */}
-      <div className="flex flex-1">
+      <div className="flex flex-1 relative">
         {/* Sidebar */}
-        <aside className="w-64 bg-[#3D3860] shadow-md p-6">
-          <nav>
-            <ul className="space-y-4">
+        <aside
+          className={`
+            ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+            md:translate-x-0 transition-transform duration-300 ease-in-out
+            absolute md:relative z-10 w-64 bg-[#3D3860] shadow-md h-full
+            overflow-y-auto
+          `}
+        >
+          <nav className="p-4">
+            <ul className="space-y-2">
               <li>
-                <a href="#introduction" className="text-white">
+                <a
+                  href="#introduction"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Introduction
                 </a>
               </li>
               <li>
-                <a href="#overview" className="text-white">
+                <a
+                  href="#overview"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Overview
                 </a>
               </li>
               <li>
-                <a href="#prerequisites" className="text-white">
+                <a
+                  href="#prerequisites"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Prerequisites
                 </a>
               </li>
               <li>
-                <a href="#getting-started" className="text-white ">
+                <a
+                  href="#getting-started"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Getting Started
                 </a>
               </li>
               <li>
-                <a href="#setup" className="text-white ">
+                <a
+                  href="#setup"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Setup Instructions
                 </a>
               </li>
               <li>
-                <a href="#components" className="text-white ">
+                <a
+                  href="#components"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Components
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-white ">
+                <a
+                  href="#faq"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="#learn-more" className="text-white ">
+                <a
+                  href="#learn-more"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Learn More
                 </a>
               </li>
               <li>
-                <a href="#deployment" className="text-white ">
+                <a
+                  href="#deployment"
+                  className="text-white block py-2 px-4 hover:bg-blue-600 rounded"
+                >
                   Deployment
                 </a>
               </li>
@@ -66,10 +109,12 @@ export default function DocumentationLayout() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 md:p-6 overflow-y-auto">
           {/* Introduction Section */}
-          <section id="introduction">
-            <h2 className="text-3xl font-bold mb-4">Introduction</h2>
+          <section id="introduction" className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Introduction
+            </h2>
             <p className="text-gray-700 mb-6">
               Welcome to the documentation for our project. This section
               provides an overview of what you can find in the documentation.
@@ -77,50 +122,51 @@ export default function DocumentationLayout() {
           </section>
 
           {/* Overview Section */}
-          <section id="overview">
-            <h2 className="text-3xl font-bold mb-4">Overview</h2>
+          <section id="overview" className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Overview</h2>
             <p className="text-gray-700 mb-6">
               This is a Next.js project bootstrapped with{" "}
-              <code>create-next-app</code>.
+              <code className="bg-gray-200 rounded p-1">create-next-app</code>.
             </p>
           </section>
 
           {/* Prerequisites Section */}
-          <section id="prerequisites">
-            <h2 className="text-3xl font-bold mb-4">Prerequisites</h2>
+          <section id="prerequisites" className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Prerequisites
+            </h2>
             <p className="text-gray-700 mb-6">
-              Before you begin, make sure you have the following tools installed
-              on your system:
+              Before you begin, make sure you have the following tools
+              installed:
             </p>
             <ul className="list-disc list-inside text-gray-700 mb-6">
-              <li>
-                <strong>Git</strong> - Version control system. You can download
-                it from{" "}
+              <li className="mb-2">
+                <strong>Git</strong> - Version control system. Download from{" "}
                 <a
                   href="https://git-scm.com/"
-                  className="text-indigo-600 hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
                   git-scm.com
                 </a>
                 .
               </li>
-              <li>
-                <strong>Node.js</strong> - The latest stable version is
-                recommended. You can download it from{" "}
+              <li className="mb-2">
+                <strong>Node.js</strong> - Latest stable version recommended.
+                Download from{" "}
                 <a
                   href="https://nodejs.org/"
-                  className="text-indigo-600 hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
                   nodejs.org
                 </a>
                 .
               </li>
-              <li>
+              <li className="mb-2">
                 <strong>Visual Studio Code</strong> - A powerful code editor.
-                You can download it from{" "}
+                Download from{" "}
                 <a
                   href="https://code.visualstudio.com/"
-                  className="text-indigo-600 hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
                   code.visualstudio.com
                 </a>
@@ -224,10 +270,10 @@ export default function DocumentationLayout() {
 
           {/* Components Section */}
           <section id="components" className="mb-8">
-            <h2 className="text-3xl font-bold mb-4">Components</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Components</h2>
             <p className="text-gray-700 mb-6">
               Here you can find detailed information about the components used
-              in the project.
+              in the project. Click on a card to see the component's code.
             </p>
             <div className="mt-8">
               <ComponentsGrid />
