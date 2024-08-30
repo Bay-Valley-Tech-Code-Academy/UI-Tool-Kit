@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Decimal from "decimal.js";
 
 export default function Checkout() {
     const [checkoutData, setCheckoutData] = useState({
@@ -37,16 +36,11 @@ export default function Checkout() {
             (item) => !isNaN(parseFloat(item.price))
             );
             
-            const calculatedSubtotal = validCartItems
-            .reduce(
+            setSubtotal(validCartItems.reduce(
                 (currentValue, item) =>
-                new Decimal(parseFloat(item.price))
-                    .times(item.quantity)
-                    .plus(currentValue),
-                new Decimal(0)
-            )
-            .toFixed(2);
-            setSubtotal(parseFloat(calculatedSubtotal));
+                parseFloat((item.price) * item.quantity) + currentValue,
+                0
+            ));
         }
 
         if (savedShippingEstimate) {
@@ -57,8 +51,7 @@ export default function Checkout() {
         setTaxEstimate(parseFloat(savedTaxEstimate));
         }
 
-        const totalBeforeDiscount = subtotal + shippingEstimate + taxEstimate;
-        setTotalBeforeDiscount(totalBeforeDiscount.toFixed(2));
+        setTotalBeforeDiscount(Math.round((subtotal + shippingEstimate + taxEstimate) * 100 ) / 100);
 
         const total = subtotal + shippingEstimate + taxEstimate - discount;
         setTotal(total.toFixed(2));
@@ -181,22 +174,22 @@ export default function Checkout() {
                         <div>
                             <label className="block">Promo Code</label>
                             <input
-                                className="text-white bg-inherit outline outline-1 rounded-sm p-1 h-9 sm:w-full md:w-60"
+                                className="text-white bg-inherit outline outline-1 rounded-sm p-1 h-9"
                                 type="text" 
                                 value={promoCode} 
                                 onChange={(e) => setPromoCode(e.target.value)} 
                             />
                             <button 
-                                className="bg-white text-black h-10 text-sm w-24 rounded-md ml-1"
+                                className="bg-white text-black h-9 text-sm w-24 rounded-md ml-2"
                                 onClick={applyPromoCode} 
                                 >Apply
                             </button>
                         </div>
                     </div>
                     <div className="text-md">
-                        <p>Original Price: ${totalBeforeDiscount} </p>
-                        <p>Coupon Discount: {discount > 0 && (<inline> -${discount.toFixed(2)}</inline>)} </p>
-                        <p>Total: ${total} </p>
+                        <p> Total: ${totalBeforeDiscount} </p>
+                         {discount > 0 && (<p> Coupon Discount: -${discount.toFixed(2)}</p>)} 
+                        <p> Grand Total: ${total} </p>
                     </div>
                     <div className="flex justify-center">
                         <button
