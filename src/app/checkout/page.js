@@ -188,8 +188,8 @@ export default function Checkout() {
                     </div>
                     <div className="text-md">
                         <p> Total: ${totalBeforeDiscount} </p>
-                         {discount > 0 && (<p> Coupon Discount: -${discount.toFixed(2)}</p>)} 
-                        <p> Grand Total: ${total} </p>
+                         {discount > 0 && (<p> Coupon Discount: -${discount.toFixed(2)}<br/>Grand Total: ${total}</p>)} 
+                        
                     </div>
                     <div className="flex justify-center">
                         <button
