@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { PlusSmallIcon } from "@heroicons/react/24/outline";
 import PromoSection from "../components/promosection";
-import products from "../data/products";
 import { useRouter } from "next/navigation";
 
 export default function ProductList() {

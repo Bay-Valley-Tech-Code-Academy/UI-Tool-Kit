@@ -1,16 +1,13 @@
-// src/app/api/checkout/route.js
-
 import { NextResponse } from 'next/server';
 import { Client } from 'pg';
 
-const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-});
-
-client.connect();
-
 export async function POST(request) {
+    const client = new Client({
+        connectionString: process.env.DATABASE_URL,
+    });
+
     try {
+        await client.connect();
         const data = await request.json();
         const { 
             country, state, city, zip_code, card_name, 
@@ -44,7 +41,7 @@ export async function POST(request) {
             VALUES ($1, $2, $3, $4)
         `;
         for (const item of cart) {
-            // Fetch the price of the product (assuming you have a method to get the price by product_id)
+            // Fetch the price of the product
             const productQuery = 'SELECT price FROM products WHERE id = $1';
             const productResult = await client.query(productQuery, [item.id]);
             const productPrice = productResult.rows[0]?.price || 0; // Default to 0 if price is not found
